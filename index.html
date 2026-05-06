@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="zh-Hant-en">
 <head>
 <meta charset="UTF-8">
@@ -19,122 +20,122 @@ html{scroll-behavior:smooth}
 body{background:var(--ink);color:var(--paper);font-family:var(--serif);line-height:1.8;overflow-x:hidden}
 
 nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(26,23,20,.96);backdrop-filter:blur(8px);border-bottom:1px solid rgba(184,134,11,.18);padding:0 1.5rem;display:flex;align-items:center;height:52px}
-.nav-logo{font-size:17px;color:var(--gold-light);margin-right:1.5rem;white-space:nowrap;letter-spacing:.05em;flex-shrink:0;font-family:var(--serif)}
+.nav-logo{font-size:17px;color:var(–gold-light);margin-right:1.5rem;white-space:nowrap;letter-spacing:.05em;flex-shrink:0;font-family:var(–serif)}
 .nav-links{display:flex;overflow-x:auto;-ms-overflow-style:none;scrollbar-width:none}
 .nav-links::-webkit-scrollbar{display:none}
-.nav-links a{color:var(--faint);font-size:11px;text-decoration:none;padding:0 13px;height:52px;display:flex;align-items:center;border-bottom:2px solid transparent;transition:all .2s;white-space:nowrap;letter-spacing:.05em;font-family:var(--sans)}
-.nav-links a:hover{color:var(--gold-light);border-bottom-color:var(--gold)}
+.nav-links a{color:var(–faint);font-size:11px;text-decoration:none;padding:0 13px;height:52px;display:flex;align-items:center;border-bottom:2px solid transparent;transition:all .2s;white-space:nowrap;letter-spacing:.05em;font-family:var(–sans)}
+.nav-links a:hover{color:var(–gold-light);border-bottom-color:var(–gold)}
 
 .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6rem 2rem 4rem;position:relative;overflow:hidden}
 .hero-bg{position:absolute;inset:0;opacity:.05;background-image:repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(184,134,11,.5) 39px,rgba(184,134,11,.5) 40px),repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(184,134,11,.5) 39px,rgba(184,134,11,.5) 40px)}
-.hero-zh{font-size:clamp(52px,10vw,108px);font-weight:300;color:var(--gold);letter-spacing:.15em;line-height:1;margin-bottom:.5rem}
-.hero-rule{width:80px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:.8rem auto}
-.hero-en{font-size:clamp(10px,1.6vw,15px);letter-spacing:.3em;text-transform:uppercase;color:var(--faint);font-family:var(--sans);margin-bottom:2rem}
-.hero-tag{font-size:clamp(13px,1.6vw,18px);color:var(--paper);max-width:600px;line-height:1.7;font-style:italic;font-weight:300;margin-bottom:3rem}
+.hero-zh{font-size:clamp(52px,10vw,108px);font-weight:300;color:var(–gold);letter-spacing:.15em;line-height:1;margin-bottom:.5rem}
+.hero-rule{width:80px;height:1px;background:linear-gradient(90deg,transparent,var(–gold),transparent);margin:.8rem auto}
+.hero-en{font-size:clamp(10px,1.6vw,15px);letter-spacing:.3em;text-transform:uppercase;color:var(–faint);font-family:var(–sans);margin-bottom:2rem}
+.hero-tag{font-size:clamp(13px,1.6vw,18px);color:var(–paper);max-width:600px;line-height:1.7;font-style:italic;font-weight:300;margin-bottom:3rem}
 .hero-stats{display:flex;gap:2.5rem;justify-content:center;flex-wrap:wrap}
-.stat-num{font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(--gold-light);display:block;line-height:1}
-.stat-lbl{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);font-family:var(--sans);margin-top:4px}
-.scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);color:var(--faint);font-size:10px;letter-spacing:.15em;text-transform:uppercase;font-family:var(--sans);animation:boun 2s infinite}
+.stat-num{font-size:clamp(22px,3.5vw,36px);font-weight:300;color:var(–gold-light);display:block;line-height:1}
+.stat-lbl{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(–faint);font-family:var(–sans);margin-top:4px}
+.scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);color:var(–faint);font-size:10px;letter-spacing:.15em;text-transform:uppercase;font-family:var(–sans);animation:boun 2s infinite}
 @keyframes boun{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
 
 section{padding:5rem 0}
 .si{max-width:900px;margin:0 auto;padding:0 2rem}
-.slbl{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-family:var(--sans);margin-bottom:.4rem}
-.stitle{font-size:clamp(24px,4vw,42px);font-weight:300;color:var(--paper);line-height:1.2;margin-bottom:.3rem}
-.szh{font-size:clamp(14px,2vw,23px);color:var(--gold);font-weight:300;margin-bottom:1.4rem;opacity:.75}
+.slbl{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(–gold);font-family:var(–sans);margin-bottom:.4rem}
+.stitle{font-size:clamp(24px,4vw,42px);font-weight:300;color:var(–paper);line-height:1.2;margin-bottom:.3rem}
+.szh{font-size:clamp(14px,2vw,23px);color:var(–gold);font-weight:300;margin-bottom:1.4rem;opacity:.75}
 .sint{font-size:16px;color:rgba(245,240,232,.65);line-height:1.8;font-style:italic;max-width:700px;margin-bottom:2.5rem;font-weight:300}
-.subh{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-family:var(--sans);margin:3rem 0 1.2rem;padding-bottom:.5rem;border-bottom:1px solid rgba(184,134,11,.15)}
+.subh{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(–gold);font-family:var(–sans);margin:3rem 0 1.2rem;padding-bottom:.5rem;border-bottom:1px solid rgba(184,134,11,.15)}
 
 .bp{font-size:15px;color:rgba(245,240,232,.66);line-height:1.9;font-weight:300;margin-bottom:1rem}
-.bp strong{color:var(--paper);font-weight:400}
-.pq{border-left:2px solid var(--gold);padding:.55rem 1rem;margin:1rem 0;font-style:italic;color:rgba(245,240,232,.48);font-size:14px;line-height:1.7}
+.bp strong{color:var(–paper);font-weight:400}
+.pq{border-left:2px solid var(–gold);padding:.55rem 1rem;margin:1rem 0;font-style:italic;color:rgba(245,240,232,.48);font-size:14px;line-height:1.7}
 
 .two{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.1rem}
 @media(max-width:580px){.two{grid-template-columns:1fr}}
 .icard{background:rgba(184,134,11,.06);border:1px solid rgba(184,134,11,.14);border-radius:6px;padding:.9rem 1.1rem}
-.icard h4{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);font-family:var(--sans);margin-bottom:.35rem}
-.icard p{font-size:13px;color:rgba(245,240,232,.58);line-height:1.7;font-family:var(--sans)}
+.icard h4{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(–gold);font-family:var(–sans);margin-bottom:.35rem}
+.icard p{font-size:13px;color:rgba(245,240,232,.58);line-height:1.7;font-family:var(–sans)}
 
 .memo{background:rgba(20,16,12,.65);border:1px solid rgba(184,134,11,.2);border-radius:8px;padding:1.5rem 1.7rem;margin:1.4rem 0;position:relative}
-.memo::before{content:'\201C';position:absolute;top:-.2rem;left:1.1rem;font-size:56px;color:var(--gold);opacity:.2;font-family:var(--serif);line-height:1}
-.memo-attr{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-family:var(--sans);margin-bottom:.6rem}
+.memo::before{content:’\201C’;position:absolute;top:-.2rem;left:1.1rem;font-size:56px;color:var(–gold);opacity:.2;font-family:var(–serif);line-height:1}
+.memo-attr{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(–gold);font-family:var(–sans);margin-bottom:.6rem}
 .memo-text{font-size:15px;color:rgba(245,240,232,.75);line-height:1.95;font-style:italic;font-weight:300}
-.memo-text strong{color:var(--paper);font-style:normal;font-weight:400}
+.memo-text strong{color:var(–paper);font-style:normal;font-weight:400}
 
 .chain{display:flex;flex-wrap:wrap;align-items:center;gap:5px;margin:1.1rem 0;padding:.85rem 1.1rem;background:rgba(184,134,11,.05);border:1px solid rgba(184,134,11,.12);border-radius:6px}
 .cn{display:flex;flex-direction:column;align-items:center;text-align:center}
-.cn-zh{font-size:13px;color:var(--gold-light)}
-.cn-en{font-size:9px;color:var(--faint);font-family:var(--sans)}
-.cn-g{font-size:8px;color:rgba(155,143,130,.5);font-family:var(--sans)}
+.cn-zh{font-size:13px;color:var(–gold-light)}
+.cn-en{font-size:9px;color:var(–faint);font-family:var(–sans)}
+.cn-g{font-size:8px;color:rgba(155,143,130,.5);font-family:var(–sans)}
 .cn-arr{color:rgba(184,134,11,.32);font-size:13px;flex-shrink:0}
 .cn.d .cn-zh{color:#a8d4a0}
 .cn.y .cn-zh{color:#c0e8b8;font-size:15px}
 
 .fg{display:grid;grid-template-columns:repeat(auto-fill,minmax(165px,1fr));gap:.5rem;margin:.9rem 0}
 .fc{background:rgba(184,134,11,.06);border:1px solid rgba(184,134,11,.1);border-radius:4px;padding:.4rem .7rem}
-.fl{font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--gold);font-family:var(--sans);margin-bottom:2px}
-.fv{font-size:12px;color:rgba(245,240,232,.65);font-family:var(--sans);line-height:1.35}
+.fl{font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(–gold);font-family:var(–sans);margin-bottom:2px}
+.fv{font-size:12px;color:rgba(245,240,232,.65);font-family:var(–sans);line-height:1.35}
 
 .vb{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);border-radius:6px;padding:.75rem .95rem;margin:.55rem 0}
-.vn{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--faint);font-family:var(--sans);margin-bottom:.3rem}
+.vn{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(–faint);font-family:var(–sans);margin-bottom:.3rem}
 .vt{font-size:13px;color:rgba(245,240,232,.55);line-height:1.75;font-style:italic}
 
-.ocard{background:rgba(45,90,39,.07);border:1px solid rgba(45,90,39,.2);border-left:3px solid #3B6D11;border-radius:0 6px 6px 0;padding:.8rem 1.1rem;margin:.7rem 0;font-size:12px;color:rgba(245,240,232,.62);font-family:var(--sans);line-height:1.75}
+.ocard{background:rgba(45,90,39,.07);border:1px solid rgba(45,90,39,.2);border-left:3px solid #3B6D11;border-radius:0 6px 6px 0;padding:.8rem 1.1rem;margin:.7rem 0;font-size:12px;color:rgba(245,240,232,.62);font-family:var(–sans);line-height:1.75}
 .ocard strong{color:#80b878;font-weight:400}
 
-.para{background:rgba(184,134,11,.05);border:1px solid rgba(184,134,11,.12);border-left:3px solid var(--gold);border-radius:0 6px 6px 0;padding:.85rem 1.15rem;margin-bottom:.75rem}
-.para-t{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--gold);font-family:var(--sans);margin-bottom:.35rem}
+.para{background:rgba(184,134,11,.05);border:1px solid rgba(184,134,11,.12);border-left:3px solid var(–gold);border-radius:0 6px 6px 0;padding:.85rem 1.15rem;margin-bottom:.75rem}
+.para-t{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(–gold);font-family:var(–sans);margin-bottom:.35rem}
 .para-b{font-size:14px;color:rgba(245,240,232,.63);line-height:1.85;font-weight:300}
-.para-m{font-size:11px;color:var(--faint);font-family:var(--sans);margin-top:.4rem;font-style:italic}
+.para-m{font-size:11px;color:var(–faint);font-family:var(–sans);margin-top:.4rem;font-style:italic}
 
 .pcard{background:rgba(30,26,22,.95);border:1px solid rgba(184,134,11,.14);border-radius:8px;margin-bottom:.9rem;overflow:hidden}
 .phdr{display:flex;align-items:flex-start;gap:1rem;padding:1rem 1.2rem;cursor:pointer;transition:background .15s}
 .phdr:hover{background:rgba(184,134,11,.04)}
 .popen .phdr{background:rgba(184,134,11,.06);border-bottom:1px solid rgba(184,134,11,.1)}
-.pini{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;font-family:var(--serif)}
+.pini{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;font-family:var(–serif)}
 .pmeta{flex:1;min-width:0}
-.pen{font-size:15px;font-weight:400;color:var(--paper);line-height:1.2}
-.pzh{font-size:11px;color:var(--gold);margin-top:2px;opacity:.82}
-.psub{font-size:10px;color:var(--faint);font-family:var(--sans);margin-top:2px}
-.ptag{font-size:10px;padding:2px 8px;border-radius:10px;font-family:var(--sans);white-space:nowrap;flex-shrink:0;align-self:flex-start;margin-top:2px}
-.pchev{color:var(--faint);transition:transform .25s;font-size:12px;flex-shrink:0;margin-top:4px}
+.pen{font-size:15px;font-weight:400;color:var(–paper);line-height:1.2}
+.pzh{font-size:11px;color:var(–gold);margin-top:2px;opacity:.82}
+.psub{font-size:10px;color:var(–faint);font-family:var(–sans);margin-top:2px}
+.ptag{font-size:10px;padding:2px 8px;border-radius:10px;font-family:var(–sans);white-space:nowrap;flex-shrink:0;align-self:flex-start;margin-top:2px}
+.pchev{color:var(–faint);transition:transform .25s;font-size:12px;flex-shrink:0;margin-top:4px}
 .popen .pchev{transform:rotate(90deg)}
 .pbody{max-height:0;overflow:hidden;transition:max-height .45s ease}
 .popen .pbody{max-height:3000px}
 .pcont{padding:1.1rem 1.2rem;font-size:14px;color:rgba(245,240,232,.6);line-height:1.85;font-weight:300}
-.pcont strong{color:var(--paper);font-weight:400}
+.pcont strong{color:var(–paper);font-weight:400}
 .pcont .pq{font-size:13px}
-.stag{font-size:10px;color:var(--faint);font-family:var(--sans);margin-top:.6rem;padding-top:.5rem;border-top:1px solid rgba(255,255,255,.06)}
+.stag{font-size:10px;color:var(–faint);font-family:var(–sans);margin-top:.6rem;padding-top:.5rem;border-top:1px solid rgba(255,255,255,.06)}
 
 .tl{position:relative;padding-left:2px}
-.tl::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:linear-gradient(180deg,transparent,var(--gold) 5%,var(--gold) 95%,transparent)}
+.tl::before{content:’’;position:absolute;left:0;top:0;bottom:0;width:1px;background:linear-gradient(180deg,transparent,var(–gold) 5%,var(–gold) 95%,transparent)}
 .ti{padding:0 0 2.3rem 2.2rem;position:relative;opacity:0;transform:translateY(18px);transition:opacity .6s,transform .6s}
 .ti.vis{opacity:1;transform:none}
-.td{position:absolute;left:-5px;top:5px;width:11px;height:11px;border-radius:50%;background:var(--gold);border:2px solid var(--ink)}
-.td.m{background:var(--gold-light);box-shadow:0 0 0 3px rgba(212,168,67,.18)}
+.td{position:absolute;left:-5px;top:5px;width:11px;height:11px;border-radius:50%;background:var(–gold);border:2px solid var(–ink)}
+.td.m{background:var(–gold-light);box-shadow:0 0 0 3px rgba(212,168,67,.18)}
 .td.p{background:#7a9abf}
-.td.f{background:var(--green)}
-.tdate{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);font-family:var(--sans);margin-bottom:.2rem}
-.tname{font-size:18px;font-weight:400;color:var(--paper);margin-bottom:.12rem}
-.tbadge{display:inline-block;font-size:10px;padding:2px 9px;border-radius:12px;margin-bottom:.45rem;font-family:var(--sans)}
-.bm{background:rgba(184,134,11,.17);color:var(--gold-light);border:1px solid rgba(184,134,11,.33)}
+.td.f{background:var(–green)}
+.tdate{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(–gold);font-family:var(–sans);margin-bottom:.2rem}
+.tname{font-size:18px;font-weight:400;color:var(–paper);margin-bottom:.12rem}
+.tbadge{display:inline-block;font-size:10px;padding:2px 9px;border-radius:12px;margin-bottom:.45rem;font-family:var(–sans)}
+.bm{background:rgba(184,134,11,.17);color:var(–gold-light);border:1px solid rgba(184,134,11,.33)}
 .bp2{background:rgba(60,100,160,.14);color:#88aadd;border:1px solid rgba(60,100,160,.28)}
 .bf{background:rgba(45,90,39,.17);color:#80b878;border:1px solid rgba(45,90,39,.28)}
 .tbody{font-size:14px;color:rgba(245,240,232,.6);line-height:1.9;font-weight:300}
-.tbody strong{color:var(--paper);font-weight:400}
-.tfoot{font-size:10px;color:var(--faint);font-family:var(--sans);margin-top:.45rem;letter-spacing:.04em}
+.tbody strong{color:var(–paper);font-weight:400}
+.tfoot{font-size:10px;color:var(–faint);font-family:var(–sans);margin-top:.45rem;letter-spacing:.04em}
 
 .lgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(235px,1fr));gap:.85rem;margin-top:1.4rem}
 .lcard{background:rgba(40,34,28,.85);border:1px solid rgba(184,134,11,.11);border-radius:6px;padding:1.05rem;transition:border-color .2s,transform .15s;cursor:pointer}
 .lcard:hover{border-color:rgba(184,134,11,.34);transform:translateY(-2px)}
 .lcard.exp{border-color:rgba(184,134,11,.44)}
 .ltop{display:flex;align-items:flex-start;justify-content:space-between;gap:7px;margin-bottom:.3rem}
-.lzh{font-size:22px;color:var(--gold-light);line-height:1}
-.lbadge{font-size:10px;padding:2px 7px;border-radius:10px;font-family:var(--sans)}
-.lname{font-size:12px;font-weight:400;color:var(--paper);margin-bottom:2px}
-.ldates{font-size:10px;color:var(--faint);font-family:var(--sans);margin-bottom:.28rem}
-.lrole{font-size:11px;color:rgba(245,240,232,.46);line-height:1.5;font-family:var(--sans)}
-.lgen{font-size:10px;color:var(--faint);margin-top:.38rem;font-family:var(--sans);padding-top:.38rem;border-top:1px solid rgba(255,255,255,.07)}
+.lzh{font-size:22px;color:var(–gold-light);line-height:1}
+.lbadge{font-size:10px;padding:2px 7px;border-radius:10px;font-family:var(–sans)}
+.lname{font-size:12px;font-weight:400;color:var(–paper);margin-bottom:2px}
+.ldates{font-size:10px;color:var(–faint);font-family:var(–sans);margin-bottom:.28rem}
+.lrole{font-size:11px;color:rgba(245,240,232,.46);line-height:1.5;font-family:var(–sans)}
+.lgen{font-size:10px;color:var(–faint);margin-top:.38rem;font-family:var(–sans);padding-top:.38rem;border-top:1px solid rgba(255,255,255,.07)}
 .ldet{max-height:0;overflow:hidden;transition:max-height .4s ease}
 .lcard.exp .ldet{max-height:500px}
 .ldetb{font-size:12px;color:rgba(245,240,232,.56);line-height:1.75;padding-top:.6rem;border-top:1px solid rgba(184,134,11,.1);margin-top:.6rem;font-weight:300}
@@ -142,48 +143,49 @@ section{padding:5rem 0}
 .mig{display:grid;gap:1px;background:rgba(184,134,11,.1);border:1px solid rgba(184,134,11,.14);border-radius:4px;overflow:hidden;margin-top:1.4rem}
 .ms{padding:.95rem 1.2rem;background:rgba(26,23,20,.85);cursor:pointer;transition:background .2s;border-left:3px solid transparent}
 .ms:hover{background:rgba(40,34,28,.9)}
-.ms.op{background:rgba(40,34,28,.95);border-left-color:var(--gold)}
+.ms.op{background:rgba(40,34,28,.95);border-left-color:var(–gold)}
 .mh{display:flex;align-items:center;gap:.9rem}
-.myr{font-size:10px;font-family:var(--sans);color:var(--gold);min-width:78px;letter-spacing:.04em}
-.mtt{font-size:14px;color:var(--paper);font-weight:400;flex:1}
-.marr{color:var(--faint);transition:transform .2s;font-size:12px}
+.myr{font-size:10px;font-family:var(–sans);color:var(–gold);min-width:78px;letter-spacing:.04em}
+.mtt{font-size:14px;color:var(–paper);font-weight:400;flex:1}
+.marr{color:var(–faint);transition:transform .2s;font-size:12px}
 .ms.op .marr{transform:rotate(90deg)}
 .mb{max-height:0;overflow:hidden;transition:max-height .4s ease}
 .ms.op .mb{max-height:400px}
 .mb p{padding:.65rem 0 .2rem;font-size:13px;color:rgba(245,240,232,.6);line-height:1.85;font-weight:300}
-.mb p strong{color:var(--paper);font-weight:400}
+.mb p strong{color:var(–paper);font-weight:400}
 
 .tsec{margin-bottom:1.8rem}
-.tera{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);font-family:var(--sans);margin-bottom:.65rem;padding-bottom:.3rem;border-bottom:1px solid rgba(184,134,11,.13)}
+.tera{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(–gold);font-family:var(–sans);margin-bottom:.65rem;padding-bottom:.3rem;border-bottom:1px solid rgba(184,134,11,.13)}
 .trow{display:flex;align-items:flex-start;gap:.35rem;margin-bottom:.5rem;flex-wrap:wrap}
-.tgl{font-size:10px;color:var(--faint);font-family:var(--sans);min-width:105px;padding-top:6px;text-align:right;padding-right:9px;flex-shrink:0}
+.tgl{font-size:10px;color:var(–faint);font-family:var(–sans);min-width:105px;padding-top:6px;text-align:right;padding-right:9px;flex-shrink:0}
 .tppl{display:flex;flex-wrap:wrap;gap:4px}
 .pc{padding:4px 7px;border-radius:4px;border:1px solid;display:flex;flex-direction:column;align-items:center;min-width:58px}
 .pc .z{font-size:12px;font-weight:400}
-.pc .p{font-size:9px;font-family:var(--sans);margin-top:1px;opacity:.6}
-.pc .e{font-size:9px;font-family:var(--sans);margin-top:1px;opacity:.44;font-style:italic}
+.pc .p{font-size:9px;font-family:var(–sans);margin-top:1px;opacity:.6}
+.pc .e{font-size:9px;font-family:var(–sans);margin-top:1px;opacity:.44;font-style:italic}
 .pcd{background:rgba(45,90,39,.13);border-color:rgba(45,90,39,.36);color:#a8d4a0}
-.pci{background:rgba(184,134,11,.08);border-color:rgba(184,134,11,.26);color:var(--gold-light)}
-.pcb{background:rgba(255,255,255,.03);border-color:rgba(255,255,255,.08);color:var(--faint)}
-.pcf{background:rgba(255,255,255,.03);border-color:rgba(255,255,255,.08);border-style:dashed;color:var(--faint)}
+.pci{background:rgba(184,134,11,.08);border-color:rgba(184,134,11,.26);color:var(–gold-light)}
+.pcb{background:rgba(255,255,255,.03);border-color:rgba(255,255,255,.08);color:var(–faint)}
+.pcf{background:rgba(255,255,255,.03);border-color:rgba(255,255,255,.08);border-style:dashed;color:var(–faint)}
 .pca{background:rgba(139,26,26,.1);border-color:rgba(139,26,26,.26);color:#e08080}
 .pcy{background:rgba(45,90,39,.2);border-color:rgba(45,90,39,.52);color:#c0e8b8}
-.pcm{background:rgba(184,134,11,.11);border-color:rgba(184,134,11,.28);color:var(--gold-light)}
+.pcm{background:rgba(184,134,11,.11);border-color:rgba(184,134,11,.28);color:var(–gold-light)}
 .pcs{background:rgba(120,80,160,.09);border-color:rgba(120,80,160,.26);color:#c0a0e0}
 .conn{width:11px;height:1px;background:rgba(184,134,11,.26);align-self:center;flex-shrink:0}
-.gnote{font-size:11px;font-family:var(--sans);color:var(--gold);background:rgba(184,134,11,.06);border:1px dashed rgba(184,134,11,.2);border-radius:4px;padding:4px 10px;margin:.28rem 0;line-height:1.6}
-.rnote{font-size:11px;font-family:var(--sans);color:#80b878;background:rgba(45,90,39,.08);border:1px solid rgba(45,90,39,.2);border-radius:4px;padding:4px 10px;margin:.28rem 0;line-height:1.6}
+.gnote{font-size:11px;font-family:var(–sans);color:var(–gold);background:rgba(184,134,11,.06);border:1px dashed rgba(184,134,11,.2);border-radius:4px;padding:4px 10px;margin:.28rem 0;line-height:1.6}
+.rnote{font-size:11px;font-family:var(–sans);color:#80b878;background:rgba(45,90,39,.08);border:1px solid rgba(45,90,39,.2);border-radius:4px;padding:4px 10px;margin:.28rem 0;line-height:1.6}
 
 .closing{background:rgba(184,134,11,.04);border-top:1px solid rgba(184,134,11,.13);border-bottom:1px solid rgba(184,134,11,.13);text-align:center;padding:5rem 2rem}
-.closing-zh{font-size:clamp(32px,6vw,56px);color:var(--gold);font-weight:300;letter-spacing:.15em;margin-bottom:.65rem}
+.closing-zh{font-size:clamp(32px,6vw,56px);color:var(–gold);font-weight:300;letter-spacing:.15em;margin-bottom:.65rem}
 .closing-body{font-size:15px;color:rgba(245,240,232,.56);max-width:520px;margin:0 auto;line-height:1.9;font-style:italic;font-weight:300}
 .cnames{display:flex;flex-wrap:wrap;justify-content:center;gap:.3rem 1.1rem;margin-top:1.4rem}
-.cn-n{font-size:13px;color:var(--gold-light);font-family:var(--sans)}
-footer{text-align:center;padding:2rem;font-size:10px;color:var(--faint);font-family:var(--sans);letter-spacing:.05em}
+.cn-n{font-size:13px;color:var(–gold-light);font-family:var(–sans)}
+footer{text-align:center;padding:2rem;font-size:10px;color:var(–faint);font-family:var(–sans);letter-spacing:.05em}
 .fi{opacity:0;transform:translateY(18px);transition:opacity .7s,transform .7s}
 .fi.vis{opacity:1;transform:none}
 @media(max-width:600px){.tgl{min-width:66px;font-size:9px}.lgrid{grid-template-columns:1fr}}
 </style>
+
 </head>
 <body>
 
@@ -216,6 +218,7 @@ footer{text-align:center;padding:2rem;font-size:10px;color:var(--faint);font-fam
 </section>
 
 <!-- 1. ORIGINS -->
+
 <section id="origins" style="background:rgba(40,34,28,.4)">
 <div class="si">
   <div class="fi">
@@ -238,6 +241,7 @@ footer{text-align:center;padding:2rem;font-size:10px;color:var(--faint);font-fam
 </section>
 
 <!-- 2. LEGENDS -->
+
 <section id="legends">
 <div class="si">
   <div class="fi">
@@ -251,6 +255,7 @@ footer{text-align:center;padding:2rem;font-size:10px;color:var(--faint);font-fam
 </section>
 
 <!-- 3. MIGRATION -->
+
 <section id="migration" style="background:rgba(40,34,28,.4)">
 <div class="si">
   <div class="fi">
@@ -264,6 +269,7 @@ footer{text-align:center;padding:2rem;font-size:10px;color:var(--faint);font-fam
 </section>
 
 <!-- 4. THE FAMILY -->
+
 <section id="family">
 <div class="si">
   <div class="fi">
@@ -287,6 +293,7 @@ footer{text-align:center;padding:2rem;font-size:10px;color:var(--faint);font-fam
   </div>
 
   <!-- Early ancestors -->
+
   <div class="fi" style="transition-delay:.1s">
     <div class="subh">Early ancestors · from the 1963 memoir</div>
     <div class="tl">
@@ -320,6 +327,7 @@ footer{text-align:center;padding:2rem;font-size:10px;color:var(--faint);font-fam
   </div>
 
   <!-- Lee Yick Poon -->
+
   <div class="fi" style="transition-delay:.1s">
     <div class="subh">Lee Yick Poon · 奕揖 · Gen. 26 · In his own words</div>
     <div class="fg">
@@ -351,6 +359,7 @@ footer{text-align:center;padding:2rem;font-size:10px;color:var(--faint);font-fam
   </div>
 
   <!-- Parables -->
+
   <div class="fi" style="transition-delay:.1s">
     <div class="subh">Lee Yick Poon's parables</div>
     <div class="para"><div class="para-t">The boy on the balcony</div><div class="para-b">A family sat down to dinner with only a whole fish. When someone flipped it for the other side, a thump came from above — a child had been watching from a balcony, so excited by the abundance that he lost his footing and fell to his death.</div><div style="margin-top:.5rem;font-size:13px;color:rgba(245,240,232,.4);font-family:var(--sans);line-height:1.8">昔有一家，圍桌共膳，席間僅一整魚。席間有人將魚翻轉，欲食另一面。忽聞頭頂一聲悶響——原來樓上陽台有孩童窺視，見魚翻轉，以為豐盛，喜不自勝，失足墜落，一命嗚呼。</div><div class="para-m">Let others eat first. Tom Lee: "To this day, I still don't flip the fish."</div></div>
@@ -360,6 +369,7 @@ footer{text-align:center;padding:2rem;font-size:10px;color:var(--faint);font-fam
   </div>
 
   <!-- The four sons -->
+
   <div class="fi" style="transition-delay:.1s">
     <div class="subh">Generation 27 — the four sons of Lee Yick Poon</div>
     <div id="g27"></div>
@@ -368,6 +378,7 @@ footer{text-align:center;padding:2rem;font-size:10px;color:var(--faint);font-fam
 </section>
 
 <!-- 5. AMERICA -->
+
 <section id="america" style="background:rgba(40,34,28,.4)">
 <div class="si">
   <div class="fi">
@@ -437,6 +448,7 @@ footer{text-align:center;padding:2rem;font-size:10px;color:var(--faint);font-fam
 </section>
 
 <!-- 6. FAMILY TREE -->
+
 <section id="tree" style="background:rgba(35,28,22,.5)">
 <div class="si">
   <div class="fi">
@@ -458,6 +470,7 @@ footer{text-align:center;padding:2rem;font-size:10px;color:var(--faint);font-fam
 </section>
 
 <!-- 7. RESEARCH -->
+
 <section id="research">
 <div class="si">
   <div class="fi">
@@ -522,7 +535,7 @@ const legs=[
   {zh:'伯益',py:'Bó Yì',dt:'c. 23rd century BCE',bg:'Son of Gao Yao',bc:'#EEEDFE22',tc:'#9090d0',ro:'Named in 台山族譜 · helped control the Great Flood · rewarded with surname 嬴',gn:'Generation 2 from Gao Yao · named in 2018 Taishan genealogy',de:'Gao Yao\'s first son, listed explicitly in the 2018 Taishan genealogy. He assisted Emperor Shun and Yu the Great in controlling the Great Flood, and was awarded the surname 嬴 (Yíng) — ancestor of many great Chinese clans including the Qin imperial family. The Li surname descended through a collateral branch of his line, eventually producing 理微 and 利贞 in the Shang Dynasty.'},
   {zh:'利貞',py:'Lì Zhēn · 理微 Lǐ Wēi',dt:'理微 b. 1100–1049 BCE · 利貞 b. 1069–992 BCE',bg:'Shang Dynasty · Li surname crystalized',bc:'rgba(139,26,26,.12)',tc:'#e08080',ro:'理微 and 利贞 — the Shang Dynasty figures who transformed 理 into 李',gn:'Named with dates in 台山李氏族譜 2018',de:'The 2018 Taishan genealogy records these two figures with precise lifespans — 理微 (Lǐ Wēi, born 1100–1049 BCE, age 52) and his descendant 利貞 (Lì Zhēn, born 1069–992 BCE, age 78). Li Zhen is the figure who, fleeing persecution under the tyrant King Zhou of Shang, survived on wild plums (李) and changed the family surname from 理 to 李 — the character our family has carried ever since. The genealogy also records 昌意 (born 1015–935 BCE, age 81) and 彤德 (born 996–912 BCE, age 87) continuing the line through the early Zhou Dynasty.'},
   {zh:'李耳',py:'Lǐ Ěr (Laozi)',dt:'c. 571–471 BCE',bg:'Founder of Taoism',bc:'#EEEDFE22',tc:'#9090d0',ro:'Author of the Tao Te Ching',gn:'~10th generation',de:'The 2018 Taishan genealogy records him as living 559–378 BCE, age 182 — the extraordinary lifespan acknowledging his legendary status. His sons are named: 李宗 (Lǐ Zōng) as eldest and 李注 (Lǐ Zhù) as second son, among others. The Tao Te Ching has been translated more times than any book except the Bible. Our line descends through his sons into the Shaanxi branch that would eventually produce Li Guang and the Tang imperial family.'},
-  {zh:'李廣',py:'Lǐ Guǎng',dt:'195–119 BCE',bg:'Han general',bc:'rgba(139,26,26,.15)',tc:'#e07070',ro:'"Flying General" · 40 years against the Xiongnu',gn:'~30th generation',de:'Known as the "Flying General" (飛將軍), born 195–119 BCE, age 77. He once shot an arrow into a rock thinking it was a tiger. Wang Changling immortalized him: "But the Flying General is here now — no Tartars dare cross the Yin Mountains." The 2018 Taishan genealogy names his son 李敢 (Lǐ Gǎn, born 149–127 BCE, died young at 23) and traces every generation from Li Guang all the way to Li Gao (founder of Western Liang, 400 CE) — 李璟, 李承, 李先, 君况, 李本, 李忠, 李钦, 李超, 李盛, 李楼, 李发, 李视 — roughly 600 years of documented descent with birth and death years for each figure.'},
+  {zh:'李廣',py:'Lǐ Guǎng',dt:'c. 184–119 BCE · age 64–65',bg:'Han general · Longxi branch',bc:'rgba(139,26,26,.15)',tc:'#e07070',ro:'"Flying General" (飛將軍) · Longxi Commandery · born Chengji, modern Tianshui, Gansu',gn:'~30th generation · Longxi Li clan (隴西李氏)',de:'Born c. 184 BCE in Chengji, Longxi Commandery (modern Tianshui, Gansu) — the heartland of the Longxi Li clan. Died 119 BCE by his own hand, refusing the humiliation of a court martial after getting lost in the Gobi Desert during the Battle of Mobei. The Flying General who survived 40 years of war against the Xiongnu was ultimately undone by losing his way in the desert.<br><br>He once shot an arrow so deeply into a rock he had mistaken for a crouching tiger that it could not be extracted — Sima Qian recorded this as proof of his extraordinary power. Wang Changling immortalized him: \'But the Flying General is here now — no Tartars dare cross the Yin Mountains.\'<br><br>His son 李敢 (Lǐ Gǎn) avenged his father\'s death by assaulting Wei Qing — and was later shot dead by Huo Qubing during a hunting trip in retribution. The 2018 Taishan genealogy traces every generation from Li Guang to Li Gao (Western Liang founder, 400 CE) — 李璟, 李承, 李先, 君况, 李本, 李忠, 李钦, 李超, 李盛, 李楼, 李发, 李视 — roughly 600 years of documented descent with birth and death years for each figure.'},
   {zh:'李暠',py:'Lǐ Gǎo',dt:'351–417 CE',bg:'King of Western Liang',bc:'rgba(184,134,11,.12)',tc:'#d4a843',ro:'Silk Road kingdom at Dunhuang · forefather of Tang Dynasty and Li Bai',gn:'~43rd generation',de:'Founded the Western Liang kingdom at Dunhuang in 400 CE. The 2018 Taishan genealogy records the founding moment: "changed era name to Jianchu, called himself Duke of Liang, became the founding emperor of Western Liang." The documented chain from Li Gao to Emperor Gaozu (Tang founder) now runs: 李暠 → 李歆 → 李重耳 (born 389–460 CE, age 72) → 李熙 (born 424–495 CE, age 72) → 李天錫 → 李虎 → 李昞 → 李淵 (Emperor Gaozu, Tang founder, 566–635 CE). Every generation confirmed with birth and death years in the Taishan genealogy. Posthumously honored as Emperor Xingsheng (興聖皇帝). Li Bai\'s ancestry also traces to him.'},
   {zh:'李淵',py:'Lǐ Yuān',dt:'566–635 CE',bg:'Emperor Gaozu',bc:'rgba(184,134,11,.12)',tc:'#d4a843',ro:'Founded the Tang Dynasty 618 CE',gn:'~50th generation',de:'Founded the Tang Dynasty in 618 CE. The 2018 Taishan genealogy records him as born 571–649 CE, age 79. He inherited the title Duke of Tang from his father 李昞, served as Governor-General of Anzhou and Grand General before founding the dynasty. Posthumously titled Emperor Shizu Yuan (世祖元帝皇帝). The complete chain from Li Gao (Western Liang, 400 CE) is confirmed: 李歆 → 李重耳 → 李熙 → 李天錫 → 李虎 → 李昞 → 李淵. He had at least eight sons including Li Jiancheng (eldest) and Li Shimin (second son, future Emperor Taizong).'},
   {zh:'李世民',py:'Lǐ Shìmín',dt:'599–649 CE',bg:'Emperor Taizong',bc:'rgba(184,134,11,.12)',tc:'#d4a843',ro:'"Heavenly Khan" · greatest Tang emperor',gn:'~51st generation',de:'Born 599 CE, died 649 CE, age 51. Reigned 23 years (626–649 CE). The 2018 Taishan genealogy records his reign dates precisely: 在位二十三年. Created the "Reign of Zhenguan" (貞觀之治). Foreign peoples called him "Heavenly Khan" (天可汗). Master calligrapher and poet. He had at least 14 named sons — the genealogy numbers them through ①–⑭ and beyond, including Emperor Gaozong (李治, son ③) who continued the Tang line. Our ancestor Li Sheng (727–793 CE) descends through a collateral branch of this imperial family.'},
@@ -667,5 +680,6 @@ treed.forEach(sec=>{
 const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('vis')})},{threshold:.08});
 document.querySelectorAll('.fi,.ti').forEach(el=>obs.observe(el));
 </script>
+
 </body>
 </html>

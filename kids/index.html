@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Family Story 🐉</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; overflow: hidden; font-family: 'Baloo 2', cursive; }
+
+/* ===== PAGE SYSTEM ===== */
+.book {
+width: 100vw;
+height: 100dvh;
+position: relative;
+overflow: hidden;
+}
+
+.page {
+position: absolute;
+inset: 0;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+text-align: center;
+padding: 2rem 1.5rem 5rem;
+opacity: 0;
+transform: translateX(60px);
+transition: opacity .4s ease, transform .4s ease;
+pointer-events: none;
+overflow-y: auto;
+}
+.page.active {
+opacity: 1;
+transform: translateX(0);
+pointer-events: all;
+}
+.page.out-left {
+opacity: 0;
+transform: translateX(-60px);
+}
+
+/* ===== BACKGROUNDS ===== */
+.bg-sky    { background: linear-gradient(160deg, #87CEEB 0%, #b8e4ff 100%); }
+.bg-grass  { background: linear-gradient(160deg, #a8e6a3 0%, #d4f7d4 100%); }
+.bg-sunset { background: linear-gradient(160deg, #ffb347 0%, #ffd89b 100%); }
+.bg-night  { background: linear-gradient(160deg, #1a1a3e 0%, #2d2d6b 100%); }
+.bg-pink   { background: linear-gradient(160deg, #ffb3d9 0%, #ffd6ec 100%); }
+.bg-purple { background: linear-gradient(160deg, #c9a6f0 0%, #e8d5ff 100%); }
+.bg-red    { background: linear-gradient(160deg, #ff8a80 0%, #ffcdd2 100%); }
+.bg-teal   { background: linear-gradient(160deg, #64d8cb 0%, #b2f0ea 100%); }
+.bg-gold   { background: linear-gradient(160deg, #ffe066 0%, #fff7c0 100%); }
+.bg-cream  { background: linear-gradient(160deg, #fff8e7 0%, #fff3d0 100%); }
+
+/* ===== BIG EMOJI ===== */
+.big-emoji {
+font-size: clamp(72px, 20vw, 140px);
+line-height: 1;
+margin-bottom: .4rem;
+animation: bob 2.5s ease-in-out infinite;
+filter: drop-shadow(0 8px 20px rgba(0,0,0,.15));
+}
+@keyframes bob {
+0%, 100% { transform: translateY(0) rotate(-2deg); }
+50% { transform: translateY(-14px) rotate(2deg); }
+}
+
+/* ===== TEXT ===== */
+.big-word {
+font-size: clamp(38px, 10vw, 80px);
+font-weight: 800;
+line-height: 1.1;
+margin-bottom: .5rem;
+letter-spacing: -.01em;
+}
+.medium-word {
+font-size: clamp(22px, 5.5vw, 44px);
+font-weight: 700;
+line-height: 1.25;
+margin-bottom: .5rem;
+}
+.small-word {
+font-size: clamp(17px, 3.5vw, 28px);
+font-weight: 600;
+line-height: 1.4;
+max-width: 480px;
+margin: 0 auto .5rem;
+}
+.tiny-word {
+font-size: clamp(13px, 2.5vw, 20px);
+font-weight: 600;
+opacity: .6;
+max-width: 400px;
+margin: 0 auto;
+}
+
+.white { color: white; }
+.dark { color: #1a1a2e; }
+.gold-txt { color: #f9a825; }
+.red-txt { color: #c62828; }
+.green-txt { color: #2e7d32; }
+.purple-txt { color: #6a1b9a; }
+
+/* ===== PILL BADGE ===== */
+.badge {
+display: inline-block;
+padding: 6px 18px;
+border-radius: 30px;
+font-size: clamp(14px, 3vw, 20px);
+font-weight: 700;
+margin: .3rem .2rem;
+}
+
+/* ===== EMOJI ROW ===== */
+.emoji-row {
+display: flex;
+gap: .4rem;
+justify-content: center;
+flex-wrap: wrap;
+margin: .6rem 0;
+}
+.emoji-row span {
+font-size: clamp(30px, 7vw, 54px);
+}
+
+/* ===== STORY BUBBLE ===== */
+.bubble {
+background: white;
+border-radius: 24px;
+padding: 1.2rem 1.5rem;
+max-width: 500px;
+width: 100%;
+box-shadow: 0 8px 30px rgba(0,0,0,.12);
+margin: .8rem auto;
+position: relative;
+}
+.bubble::after {
+content: ‘’;
+position: absolute;
+bottom: -14px;
+left: 50%;
+transform: translateX(-50%);
+border: 10px solid transparent;
+border-top-color: white;
+border-bottom: none;
+}
+
+/* ===== CHARACTER CARD ===== */
+.char-card {
+background: white;
+border-radius: 28px;
+padding: 1.4rem 1.8rem;
+max-width: 420px;
+width: 100%;
+box-shadow: 0 8px 30px rgba(0,0,0,.15);
+margin: .6rem auto;
+}
+.char-face { font-size: clamp(52px, 12vw, 80px); margin-bottom: .3rem; }
+.char-name { font-size: clamp(24px, 6vw, 40px); font-weight: 800; line-height: 1.1; }
+.char-fact { font-size: clamp(15px, 3.5vw, 22px); font-weight: 600; color: #555; margin-top: .4rem; line-height: 1.35; }
+
+/* ===== FAMILY TREE MINI ===== */
+.tree-row-wrap {
+display: flex;
+align-items: center;
+justify-content: center;
+flex-wrap: wrap;
+gap: 4px;
+margin: .3rem 0;
+}
+.tree-node {
+background: white;
+border-radius: 14px;
+padding: 8px 14px;
+font-size: clamp(13px, 3vw, 18px);
+font-weight: 700;
+box-shadow: 0 3px 10px rgba(0,0,0,.1);
+text-align: center;
+line-height: 1.25;
+}
+.tree-arrow {
+font-size: clamp(20px, 5vw, 32px);
+font-weight: 800;
+opacity: .5;
+}
+
+/* ===== NAV BUTTONS ===== */
+.nav-bar {
+position: fixed;
+bottom: 0; left: 0; right: 0;
+height: 60px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 0 1.2rem;
+background: rgba(255,255,255,.95);
+backdrop-filter: blur(10px);
+box-shadow: 0 -2px 20px rgba(0,0,0,.1);
+z-index: 200;
+}
+
+.nav-btn {
+width: 52px; height: 52px;
+border-radius: 50%;
+border: none;
+font-size: 22px;
+cursor: pointer;
+display: flex; align-items: center; justify-content: center;
+transition: transform .15s, box-shadow .15s;
+font-family: inherit;
+font-weight: 800;
+}
+.nav-btn:active { transform: scale(.9); }
+.btn-prev { background: #f0f0f0; color: #555; }
+.btn-next { background: #ff6b6b; color: white; box-shadow: 0 4px 14px rgba(255,107,107,.4); }
+.btn-next:hover { box-shadow: 0 6px 20px rgba(255,107,107,.5); }
+
+.page-dots {
+display: flex; gap: 5px; align-items: center;
+flex-wrap: wrap; justify-content: center;
+max-width: calc(100vw - 140px);
+}
+.dot {
+width: 8px; height: 8px;
+border-radius: 50%;
+background: #ddd;
+transition: all .25s;
+cursor: pointer;
+flex-shrink: 0;
+}
+.dot.active { background: #ff6b6b; width: 20px; border-radius: 4px; }
+
+/* ===== SCROLL WITHIN PAGE ===== */
+.page { -webkit-overflow-scrolling: touch; }
+
+/* ===== STARS BG ===== */
+.stars {
+position: absolute; inset: 0; overflow: hidden; pointer-events: none;
+}
+.star {
+position: absolute;
+background: white;
+border-radius: 50%;
+animation: twinkle 2s ease-in-out infinite;
+}
+@keyframes twinkle {
+0%, 100% { opacity: .3; }
+50% { opacity: 1; }
+}
+
+/* ===== WIGGLE ===== */
+.wiggle { animation: wiggle 1.5s ease-in-out infinite; }
+@keyframes wiggle {
+0%, 100% { transform: rotate(-4deg); }
+50% { transform: rotate(4deg); }
+}
+
+/* ===== BOUNCE ===== */
+.bounce { animation: bounce 1s ease-in-out infinite; }
+@keyframes bounce {
+0%, 100% { transform: translateY(0); }
+50% { transform: translateY(-10px); }
+}
+
+/* ===== CHAPTER DIVIDER ===== */
+.chapter-label {
+font-size: clamp(11px, 2.5vw, 16px);
+font-weight: 700;
+text-transform: uppercase;
+letter-spacing: .12em;
+opacity: .55;
+margin-bottom: .3rem;
+}
+</style>
+
+</head>
+<body>
+
+<div class="book" id="book">
+
+  <!-- PAGE 0: TITLE -->
+
+  <div class="page bg-night active">
+    <div class="stars" id="stars"></div>
+    <div class="big-emoji" style="animation-duration:3s">🐉</div>
+    <div class="big-word white">Our Family!</div>
+    <div class="medium-word gold-txt">李氏家族</div>
+    <div class="small-word white">The Lee Family Story</div>
+    <div class="tiny-word" style="color:rgba(255,255,255,.5);margin-top:.8rem">Tap the red button to begin ➡️</div>
+  </div>
+
+  <!-- PAGE 1: OUR NAME -->
+
+  <div class="page bg-gold">
+    <div class="big-emoji">📛</div>
+    <div class="big-word dark">Our name is LEE!</div>
+    <div class="small-word dark">In Chinese it is written like this:</div>
+    <div style="font-size:clamp(80px,20vw,150px);font-weight:800;color:#c62828;line-height:1;margin:.4rem 0">李</div>
+    <div class="small-word dark">李 means the plum tree. 🌸<br>It is one of the most common names in China!</div>
+  </div>
+
+  <!-- PAGE 2: HOW OLD -->
+
+  <div class="page bg-sky">
+    <div class="big-emoji">⏰</div>
+    <div class="big-word dark">Our family is VERY old!</div>
+    <div class="small-word dark">How old?</div>
+    <div class="char-card">
+      <div class="char-face">🦕</div>
+      <div class="char-name dark">3,000 years old!</div>
+      <div class="char-fact">That is older than the dinosaur bones at the museum!</div>
+    </div>
+    <div class="tiny-word dark">30 grandparents... then their grandparents... then THEIR grandparents... all the way back!</div>
+  </div>
+
+  <!-- PAGE 3: WHERE IS CHINA -->
+
+  <div class="page bg-teal">
+    <div class="big-emoji">🗺️</div>
+    <div class="big-word dark">We come from China!</div>
+    <div class="small-word dark">A place called <strong>Taishan</strong></div>
+    <div style="font-size:clamp(28px,7vw,52px);font-weight:800;color:#1a5f7a;margin:.3rem 0">台山</div>
+    <div class="char-card" style="max-width:380px">
+      <div class="char-face">🏔️</div>
+      <div class="char-fact dark" style="font-size:clamp(16px,3.5vw,22px)">Taishan is next to the big ocean in southern China. Lots of Chinese families in America come from Taishan! 🌊</div>
+    </div>
+  </div>
+
+  <!-- PAGE 4: THE EMPEROR -->
+
+  <div class="page bg-sunset">
+    <div class="chapter-label dark">Long long ago...</div>
+    <div class="big-emoji">👑</div>
+    <div class="big-word dark">We had a KING in our family!</div>
+    <div class="char-card">
+      <div class="char-face">🤴</div>
+      <div class="char-name dark">Emperor Gaozu</div>
+      <div class="char-fact">He started the Tang Dynasty — one of the greatest empires ever! That is like being the most powerful person on Earth.</div>
+    </div>
+    <div class="tiny-word dark">618 CE — over 1,400 years ago!</div>
+  </div>
+
+  <!-- PAGE 5: THE POET -->
+
+  <div class="page bg-night">
+    <div class="stars" id="stars2"></div>
+    <div class="big-emoji">🌙</div>
+    <div class="big-word white">We had a POET in our family!</div>
+    <div class="char-card">
+      <div class="char-face">✍️</div>
+      <div class="char-name dark">Li Bai 李白</div>
+      <div class="char-fact">He wrote beautiful poems about the moon and mountains. People all over the world still read his poems today — 1,200 years later! 🌟</div>
+    </div>
+    <div class="tiny-word white" style="opacity:.6">His most famous poem is about looking at the moon and missing home. 🌕</div>
+  </div>
+
+  <!-- PAGE 6: THE GENERAL -->
+
+  <div class="page bg-red">
+    <div class="big-emoji">⚔️</div>
+    <div class="big-word white">We had a GENERAL too!</div>
+    <div class="char-card">
+      <div class="char-face">🏹</div>
+      <div class="char-name dark">Li Sheng 李晟</div>
+      <div class="char-fact">He was a brave soldier who saved the capital city from bad guys! The emperor was SO thankful. He is our direct great-great-great-...-grandpa!</div>
+    </div>
+    <div class="tiny-word white" style="opacity:.7">727 CE — over 1,300 years ago!</div>
+  </div>
+
+  <!-- PAGE 7: THE VOYAGE -->
+
+  <div class="page bg-sky">
+    <div class="chapter-label dark">How we got to Taishan...</div>
+    <div class="big-emoji">⛵</div>
+    <div class="big-word dark">A stormy boat trip!</div>
+    <div class="small-word dark">Our ancestor <strong>Lianjian Weng</strong> sailed on a ship. A huge storm came! 🌊💨</div>
+    <div class="bubble">
+      <div style="font-size:clamp(16px,4vw,24px);font-weight:700;color:#1a1a2e">He was very sick. But he pointed his finger to a mountain and said...</div>
+    </div>
+    <div style="font-size:clamp(22px,5vw,36px);font-weight:800;color:#1565c0;margin:.5rem 0">"Build our home THERE!" 👆🏔️</div>
+    <div class="tiny-word dark">That mountain was in Taishan. And that became our family's home for 900 years!</div>
+  </div>
+
+  <!-- PAGE 8: SILVER COINS -->
+
+  <div class="page bg-gold">
+    <div class="chapter-label dark">A fun story...</div>
+    <div class="big-emoji wiggle">🪙</div>
+    <div class="big-word dark">He found secret treasure!</div>
+    <div class="small-word dark">Our ancestor <strong>Siu Yip</strong> was being kind...</div>
+    <div class="char-card" style="max-width:420px">
+      <div style="font-size:clamp(15px,3.5vw,22px);font-weight:600;color:#333;line-height:1.5;text-align:left">
+        🌸 He was fixing his dad's grave. He found <strong>silver coins hidden in the ground!</strong><br><br>
+        🛤️ He built a road to help his neighbors. He found <strong>MORE silver coins!</strong><br><br>
+        🦆 He used the money to start a duck farm. The family was rich!
+      </div>
+    </div>
+    <div class="tiny-word dark">He was kind FIRST — and found treasure BOTH times! 🌟</div>
+  </div>
+
+  <!-- PAGE 9: THE FISH STORY -->
+
+  <div class="page bg-teal">
+    <div class="chapter-label dark">A funny story...</div>
+    <div class="big-emoji bounce">🐟</div>
+    <div class="big-word dark">The thriftiest grandpa!</div>
+    <div class="char-card" style="max-width:420px">
+      <div class="char-name dark" style="font-size:clamp(20px,5vw,32px)">Sing Jom 承淦</div>
+      <div style="font-size:clamp(15px,3.5vw,22px);font-weight:600;color:#333;margin-top:.5rem;line-height:1.5">
+        He was SO careful with money...<br>
+        He ate <strong>ONE tiny fish</strong> 🐟<br>
+        with <strong>THREE mouthfuls of rice</strong> 🍚<br>
+        to make it last!
+      </div>
+    </div>
+    <div class="small-word dark" style="margin-top:.5rem">But because he saved every penny, he was able to buy land for his children. 💚</div>
+  </div>
+
+  <!-- PAGE 10: TIN WAI -->
+
+  <div class="page bg-purple">
+    <div class="chapter-label white">A loving story...</div>
+    <div class="big-emoji">💌</div>
+    <div class="big-word white">$2 and a letter</div>
+    <div class="small-word white">Our ancestor <strong>Tin Wai</strong> went far away to work as a teacher.</div>
+    <div class="char-card" style="max-width:400px">
+      <div class="char-face">👨‍🏫</div>
+      <div style="font-size:clamp(15px,3.5vw,22px);font-weight:600;color:#333;line-height:1.5">
+        Once a year, he sent home...<br>
+        <strong>$2</strong> 💵 and a <strong>letter</strong> 📬<br>
+        saying he was okay.<br><br>
+        The whole family waited all year for that letter! They missed him so much.
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE 11: YAU JEE -->
+
+  <div class="page bg-sky">
+    <div class="big-emoji">🚢</div>
+    <div class="big-word dark">Great-great-grandpa sailed to America!</div>
+    <div class="char-card" style="max-width:420px">
+      <div class="char-name dark">Yau Jee 祐志</div>
+      <div style="font-size:clamp(15px,3.5vw,22px);font-weight:600;color:#333;margin-top:.5rem;line-height:1.5">
+        🚢 He sailed on a big ship called the <strong>SS Gaelic</strong><br>
+        📅 Year: <strong>1897</strong><br>
+        📍 He went to <strong>Chicago!</strong><br>
+        🎰 He won the lottery and sent <strong>$3,000 home</strong> to the family!
+      </div>
+    </div>
+    <div class="tiny-word dark">He washed clothes for people to earn money. He worked very hard! 💪</div>
+  </div>
+
+  <!-- PAGE 12: LEE YICK POON INTRO -->
+
+  <div class="page bg-sunset">
+    <div class="chapter-label dark">The most amazing person...</div>
+    <div class="big-emoji">🦸</div>
+    <div class="big-word dark">Meet Lee Yick Poon!</div>
+    <div class="small-word dark">He is like the <strong>superhero</strong> of our family story!</div>
+    <div class="char-card">
+      <div class="char-face">👴</div>
+      <div class="char-name dark">Lee Yick Poon 奕揖</div>
+      <div class="char-fact">Born in China in 1891. He did something VERY brave to come to America...</div>
+    </div>
+  </div>
+
+  <!-- PAGE 13: THE SAILOR DISGUISE -->
+
+  <div class="page bg-night">
+    <div class="stars" id="stars3"></div>
+    <div class="big-emoji">🤫</div>
+    <div class="big-word white">He wore a disguise!</div>
+    <div class="char-card" style="max-width:420px">
+      <div style="font-size:clamp(16px,3.5vw,24px);font-weight:700;color:#333;text-align:left;line-height:1.5">
+        ⚓ He dressed up as a <strong>sailor</strong><br>
+        🚢 He hid on a <strong>cargo ship</strong><br>
+        🌊 He crossed the <strong>Pacific Ocean</strong><br>
+        🇺🇸 He arrived in <strong>America!</strong>
+      </div>
+    </div>
+    <div class="bubble">
+      <div style="font-size:clamp(15px,3.5vw,22px);font-weight:700;color:#333">His own words: "The hardship I went through was <strong>indescribable.</strong>" 😢</div>
+    </div>
+    <div class="tiny-word white" style="opacity:.6">Year: 1929</div>
+  </div>
+
+  <!-- PAGE 14: CHICAGO -->
+
+  <div class="page bg-red">
+    <div class="big-emoji">🏙️</div>
+    <div class="big-word white">He worked in Chicago!</div>
+    <div class="char-card" style="max-width:420px">
+      <div style="font-size:clamp(15px,3.5vw,22px);font-weight:600;color:#333;text-align:left;line-height:1.6">
+        🍽️ He worked in a restaurant<br>
+        💵 He earned <strong>$20 a month</strong><br>
+        (That is very little money!)<br>
+        👨‍👦 His dad Yau Jee was in Chicago too!<br>
+        <strong>Father and son — in the same city for 12 years!</strong>
+      </div>
+    </div>
+    <div class="tiny-word white" style="opacity:.8">He moved to San Francisco in 1942. 🌉</div>
+  </div>
+
+  <!-- PAGE 15: SAN FRANCISCO -->
+
+  <div class="page bg-grass">
+    <div class="big-emoji">🌉</div>
+    <div class="big-word dark">San Francisco!</div>
+    <div class="small-word dark">He lived at <strong>4 Spofford Alley</strong> in Chinatown.</div>
+    <div class="char-card" style="max-width:400px">
+      <div class="char-face">🏠</div>
+      <div style="font-size:clamp(15px,3.5vw,22px);font-weight:600;color:#333;line-height:1.5">
+        The building was old and creaky.<br>
+        His granddaughter Lillian rolled down the stairs <strong>at least twice!</strong> 😂<br><br>
+        People said a ghost lived there... 👻
+      </div>
+    </div>
+    <div class="tiny-word dark">Lee Yick Poon always wanted to see the ghost. He never did! 👻</div>
+  </div>
+
+  <!-- PAGE 16: CITIZEN -->
+
+  <div class="page bg-sky">
+    <div class="big-emoji bounce">🎉</div>
+    <div class="big-word dark">He became American!</div>
+    <div class="char-card">
+      <div class="char-face">📜</div>
+      <div class="char-name dark">February 17, 1965</div>
+      <div style="font-size:clamp(16px,3.5vw,24px);font-weight:700;color:#333;margin-top:.5rem">Lee Yick Poon became a US citizen.</div>
+      <div class="char-fact">He was <strong>73 years old!</strong><br>It took his whole life — but he did it! 🇺🇸</div>
+    </div>
+  </div>
+
+  <!-- PAGE 17: THE DIARY -->
+
+  <div class="page bg-gold">
+    <div class="big-emoji">📖</div>
+    <div class="big-word dark">He wrote it all down!</div>
+    <div class="small-word dark">In March 1963, Lee Yick Poon wrote a diary so his family would never forget where they came from.</div>
+    <div class="bubble">
+      <div style="font-size:clamp(16px,4vw,26px);font-weight:700;color:#1a1a2e">"I have raised my children. My goal has been fulfilled." 💛</div>
+    </div>
+    <div class="small-word dark" style="margin-top:.4rem">His granddaughter <strong>Lillian</strong> translated the diary. His daughter <strong>Olivia</strong> did the research. <strong>That is how we know this story!</strong></div>
+  </div>
+
+  <!-- PAGE 18: THE SHOES STORY -->
+
+  <div class="page bg-purple">
+    <div class="big-emoji">👟</div>
+    <div class="big-word white">The hungry shoes story!</div>
+    <div class="bubble">
+      <div style="font-size:clamp(16px,4vw,26px);font-weight:700;color:#1a1a2e;font-style:italic">"Grandpa saw our shoes and said, 'looks like your shoes are getting hungry!<br>Here is $5 — go get a new pair.'"</div>
+    </div>
+    <div class="small-word white" style="margin-top:.8rem">— Tom Lee, grandson</div>
+    <div class="tiny-word" style="color:rgba(255,255,255,.6);margin-top:.4rem">Even with a little money, Lee Yick Poon took care of everyone. 💜</div>
+  </div>
+
+  <!-- PAGE 19: FOUR SONS -->
+
+  <div class="page bg-teal">
+    <div class="big-emoji">👨‍👦‍👦</div>
+    <div class="big-word dark">Lee Yick Poon had 4 sons!</div>
+    <div class="small-word dark">They all came to North America.</div>
+    <div style="display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin:.8rem 0;max-width:480px">
+      <div class="tree-node" style="background:#fff8e0;color:#b08800">🌏 Yin Mau<br><span style="font-size:.7em;opacity:.6">South Seas</span></div>
+      <div class="tree-node" style="background:#edfff5;color:#2e7d32">🌉 George Lee<br><span style="font-size:.7em;opacity:.6">North America</span></div>
+      <div class="tree-node" style="background:#f0f7ff;color:#1565c0">✈️ Wing Choeng<br><span style="font-size:.7em;opacity:.6">Arrived 1968</span></div>
+      <div class="tree-node" style="background:#f3eeff;color:#6a1b9a">🌟 E Ching Lee<br><span style="font-size:.7em;opacity:.6">Arrived 1966</span></div>
+    </div>
+    <div class="tiny-word dark">One by one they crossed the ocean. The last family arrived on June 28, 1968! 🎉</div>
+  </div>
+
+  <!-- PAGE 20: THE FAMILY TREE -->
+
+  <div class="page bg-grass" style="justify-content:flex-start;padding-top:4rem">
+    <div class="big-emoji" style="font-size:60px;margin-top:0">🌳</div>
+    <div class="big-word dark" style="font-size:clamp(28px,7vw,52px)">Our Family Tree</div>
+    <div class="small-word dark" style="margin-bottom:.6rem">From way back then... to right now!</div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:4px;width:100%;max-width:500px">
+      <div class="tree-node" style="background:#fef0f0;border:2px solid #c62828;color:#c62828;font-size:clamp(12px,2.8vw,18px)">👑 Gao Yao — the very first! (4,000 years ago)</div>
+      <div class="tree-arrow">↓</div>
+      <div class="tree-node" style="background:#fef0f0;border:2px solid #c62828;color:#c62828;font-size:clamp(12px,2.8vw,18px)">☯️ Laozi — the wise philosopher</div>
+      <div class="tree-arrow">↓</div>
+      <div class="tree-node" style="background:#fff8e0;border:2px solid #b08800;color:#b08800;font-size:clamp(12px,2.8vw,18px)">👑 Emperor Gaozu — founded the Tang Dynasty</div>
+      <div class="tree-arrow">↓</div>
+      <div class="tree-node" style="background:#fff8e0;border:2px solid #b08800;color:#b08800;font-size:clamp(12px,2.8vw,18px)">⚔️ Li Sheng — the brave general (OUR direct ancestor!)</div>
+      <div class="tree-arrow">↓</div>
+      <div class="tree-node" style="background:#edfff5;border:2px solid #2e7d32;color:#2e7d32;font-size:clamp(12px,2.8vw,18px)">⛵ Lianjian Weng — pointed to the mountain</div>
+      <div class="tree-arrow">↓</div>
+      <div class="tree-node" style="background:#edfff5;border:2px solid #2e7d32;color:#2e7d32;font-size:clamp(12px,2.8vw,18px)">🌳 Zhong Chuan — built our branch in Taishan</div>
+      <div class="tree-arrow">↓</div>
+      <div class="tree-node" style="background:#edfff5;border:2px solid #2e7d32;color:#2e7d32;font-size:clamp(12px,2.8vw,18px)">⛰️ Jin Shan "Gold Mountain" — born 1192 CE</div>
+      <div class="tree-arrow">↓</div>
+      <div class="tree-node" style="background:#fff8e0;border:2px solid #b08800;color:#b08800;font-size:clamp(12px,2.8vw,18px)">🪙 Siu Yip — found treasure twice!</div>
+      <div class="tree-arrow">↓</div>
+      <div class="tree-node" style="background:#fff8e0;border:2px solid #b08800;color:#b08800;font-size:clamp(12px,2.8vw,18px)">🚢 Yau Jee — sailed to Chicago 1897</div>
+      <div class="tree-arrow">↓</div>
+      <div class="tree-node" style="background:#e8f0ff;border:2px solid #1565c0;color:#1565c0;font-size:clamp(12px,2.8vw,18px)">🦸 Lee Yick Poon — our hero! Born 1891</div>
+      <div class="tree-arrow">↓</div>
+      <div class="tree-node" style="background:#f0f7ff;border:2px solid #1565c0;color:#1565c0;font-size:clamp(12px,2.8vw,18px)">👨‍👦 His 4 sons came to North America</div>
+      <div class="tree-arrow">↓</div>
+      <div class="tree-node" style="background:#edfff5;border:2px dashed #2e7d32;color:#2e7d32;font-size:clamp(12px,2.8vw,18px)">🌟 Kingston Lee (Gen.29) → Ren Lee (Gen.30)</div>
+      <div class="tree-arrow">↓</div>
+      <div class="tree-node" style="background:#fff8e0;border:2px dashed #b08800;color:#b08800;font-size:clamp(14px,3.5vw,22px);font-weight:800">YOU! 🐉 (Gen. 31+)</div>
+    </div>
+  </div>
+
+  <!-- PAGE 21: THE GHOST STORY -->
+
+  <div class="page bg-night">
+    <div class="stars" id="stars4"></div>
+    <div class="big-emoji">👻</div>
+    <div class="big-word white">A spooky story!</div>
+    <div class="char-card" style="max-width:420px">
+      <div style="font-size:clamp(15px,3.5vw,22px);font-weight:600;color:#333;line-height:1.6">
+        At 4 Spofford Alley...<br>
+        People said there was a ghost! 👻<br>
+        You could only see <strong>HALF</strong> of her.<br>
+        (Either the top half OR the bottom half!)<br><br>
+        If you saw her, you would win the lottery! 🎰<br><br>
+        Lee Yick Poon always wanted to see her.<br>
+        <strong>He never did.</strong> 😔
+      </div>
+    </div>
+    <div class="tiny-word white" style="opacity:.6">Not every story has a lesson. Some are just fun to tell! 😄</div>
+  </div>
+
+  <!-- PAGE 22: YOU ARE PART OF IT -->
+
+  <div class="page bg-sunset">
+    <div class="big-emoji" style="animation-duration:2s">🌟</div>
+    <div class="big-word dark">And now...</div>
+    <div class="big-word dark">That is YOU!</div>
+    <div class="char-card" style="max-width:440px">
+      <div style="font-size:clamp(16px,4vw,26px);font-weight:700;color:#333;line-height:1.5">
+        Every person in this story did something hard so the <strong>next generation</strong> could have a better life.<br><br>
+        Now it is <strong>your turn</strong> to add to the story! ✏️
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE 23: THE END -->
+
+  <div class="page bg-night">
+    <div class="stars" id="stars5"></div>
+    <div class="big-emoji" style="animation-duration:3.5s">🐉</div>
+    <div class="big-word white" style="font-size:clamp(42px,12vw,100px)">李氏家族</div>
+    <div class="medium-word gold-txt">The Lee Family</div>
+    <div class="small-word white" style="opacity:.7">30 generations · 3,000 years · 2 oceans</div>
+    <div style="margin-top:1rem;display:flex;flex-wrap:wrap;justify-content:center;gap:.3rem .8rem;max-width:400px">
+      <span style="color:rgba(255,255,255,.5);font-size:clamp(11px,2.5vw,15px);font-weight:600">Kingston · Ren · Olivia · Millicent</span>
+      <span style="color:rgba(255,255,255,.5);font-size:clamp(11px,2.5vw,15px);font-weight:600">John K · Harry · Tom · Wing Fong</span>
+      <span style="color:rgba(255,249,70,.7);font-size:clamp(12px,3vw,18px);font-weight:700;margin-top:.3rem">...and YOU! 🌟</span>
+    </div>
+    <div class="tiny-word" style="color:rgba(255,255,255,.35);margin-top:1rem">Written by Lee Yick Poon · 1963 · Translated by Lillian Lui</div>
+  </div>
+
+</div><!-- end book -->
+
+<!-- NAV BAR -->
+
+<div class="nav-bar">
+  <button class="nav-btn btn-prev" id="prevBtn" onclick="go(-1)">◀</button>
+  <div class="page-dots" id="dots"></div>
+  <button class="nav-btn btn-next" id="nextBtn" onclick="go(1)">▶</button>
+</div>
+
+<script>
+// ===== STARS =====
+['stars','stars2','stars3','stars4','stars5'].forEach(id => {
+  const el = document.getElementById(id);
+  if (!el) return;
+  for (let i = 0; i < 40; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    const size = Math.random() * 3 + 1;
+    s.style.cssText = `width:${size}px;height:${size}px;top:${Math.random()*100}%;left:${Math.random()*100}%;animation-delay:${Math.random()*2}s;animation-duration:${1.5+Math.random()*2}s`;
+    el.appendChild(s);
+  }
+});
+
+// ===== PAGE SYSTEM =====
+const pages = Array.from(document.querySelectorAll('.page'));
+const dotsEl = document.getElementById('dots');
+let cur = 0;
+
+// Build dots
+pages.forEach((_, i) => {
+  const d = document.createElement('div');
+  d.className = 'dot' + (i === 0 ? ' active' : '');
+  d.onclick = () => jumpTo(i);
+  dotsEl.appendChild(d);
+});
+
+function updateDots() {
+  document.querySelectorAll('.dot').forEach((d, i) => {
+    d.classList.toggle('active', i === cur);
+  });
+}
+
+function jumpTo(n) {
+  if (n === cur) return;
+  const dir = n > cur ? 1 : -1;
+  pages[cur].classList.remove('active');
+  pages[cur].classList.add(dir > 0 ? 'out-left' : '');
+  setTimeout(() => pages[n < cur ? n + 1 : n - 1]?.classList.remove('out-left'), 10);
+
+  // Clean up old page
+  const old = pages[cur];
+  old.classList.remove('active');
+  if (dir > 0) {
+    old.classList.add('out-left');
+    setTimeout(() => old.classList.remove('out-left'), 450);
+  }
+
+  cur = n;
+  pages[cur].classList.add('active');
+  // Reset scroll
+  pages[cur].scrollTop = 0;
+  updateDots();
+  updateButtons();
+}
+
+function go(dir) {
+  const next = cur + dir;
+  if (next < 0 || next >= pages.length) return;
+  jumpTo(next);
+}
+
+function updateButtons() {
+  document.getElementById('prevBtn').style.opacity = cur === 0 ? '.3' : '1';
+  document.getElementById('nextBtn').style.opacity = cur === pages.length - 1 ? '.3' : '1';
+}
+updateButtons();
+
+// ===== KEYBOARD =====
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') go(1);
+  if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') go(-1);
+});
+
+// ===== SWIPE =====
+let tx = 0;
+document.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+document.addEventListener('touchend', e => {
+  const dx = tx - e.changedTouches[0].clientX;
+  if (Math.abs(dx) > 40) go(dx > 0 ? 1 : -1);
+}, { passive: true });
+</script>
+
+</body>
+</html>

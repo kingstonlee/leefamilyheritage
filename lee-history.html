@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>李氏历代源流世系 — Li Family Genealogy</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1209;
+    --paper: #f5f0e8;
+    --aged: #e8dfc8;
+    --red: #8b1a1a;
+    --gold: #c49a3c;
+    --gold-light: #d4b563;
+    --faded: #7a6e5e;
+    --muted: #4a3f2f;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Cormorant Garamond', 'Noto Serif SC', serif;
+    overflow-x: hidden;
+  }
+
+  /* Texture overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.5;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: var(--ink);
+    overflow: hidden;
+    padding: 60px 20px;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 50%, #2d1f0a 0%, #0d0906 60%, #000 100%);
+  }
+
+  .hero-lines {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(to right, rgba(196,154,60,0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(196,154,60,0.06) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .hero-seal {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border: 1px solid rgba(196,154,60,0.2);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulse-ring 4s ease-in-out infinite;
+  }
+  .hero-seal::before {
+    content: '';
+    position: absolute;
+    inset: 15px;
+    border: 1px solid rgba(196,154,60,0.15);
+    border-radius: 50%;
+  }
+
+  @keyframes pulse-ring {
+    0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
+    50% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.05); }
+  }
+
+  .hero-chinese {
+    font-family: 'Noto Serif SC', serif;
+    font-weight: 700;
+    font-size: clamp(48px, 10vw, 96px);
+    color: var(--gold);
+    letter-spacing: 0.15em;
+    text-align: center;
+    line-height: 1.2;
+    position: relative;
+    z-index: 2;
+    text-shadow: 0 0 40px rgba(196,154,60,0.3);
+    animation: fadeInDown 1.2s ease both;
+  }
+
+  .hero-divider {
+    width: 120px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    margin: 24px auto;
+    position: relative;
+    z-index: 2;
+    animation: fadeIn 1.5s ease both 0.3s;
+  }
+
+  .hero-subtitle {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(13px, 2vw, 18px);
+    color: rgba(196,154,60,0.7);
+    letter-spacing: 0.4em;
+    text-align: center;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 2;
+    animation: fadeIn 1.5s ease both 0.5s;
+  }
+
+  .hero-meta {
+    margin-top: 12px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: rgba(212, 181, 99, 0.5);
+    letter-spacing: 0.1em;
+    position: relative;
+    z-index: 2;
+    animation: fadeIn 1.5s ease both 0.7s;
+  }
+
+  .scroll-cue {
+    position: absolute;
+    bottom: 36px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: rgba(196,154,60,0.4);
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    z-index: 2;
+    animation: fadeIn 2s ease both 1.2s;
+  }
+
+  .scroll-cue::after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(196,154,60,0.4), transparent);
+    animation: scroll-line 2s ease-in-out infinite;
+  }
+
+  @keyframes scroll-line {
+    0%, 100% { opacity: 0.4; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(0.7); }
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(26, 18, 9, 0.97);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(196,154,60,0.2);
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+  }
+
+  .nav-title {
+    font-family: 'Noto Serif SC', serif;
+    color: var(--gold);
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  a.nav-title:hover {
+    color: var(--gold-light);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: rgba(196,154,60,0.6);
+    text-decoration: none;
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  /* ── SECTIONS ── */
+  .section {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 80px 40px;
+    position: relative;
+  }
+
+  .section + .section {
+    border-top: 1px solid rgba(196,154,60,0.15);
+  }
+
+  .section-label {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, rgba(196,154,60,0.4), transparent);
+  }
+
+  .section-chinese {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(28px, 5vw, 42px);
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+
+  .section-english {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 20px;
+    color: var(--faded);
+    margin-bottom: 40px;
+    font-weight: 300;
+  }
+
+  /* ── TYPOGRAPHY ── */
+  .body-text {
+    font-size: 17px;
+    line-height: 1.9;
+    color: var(--muted);
+    font-weight: 300;
+  }
+
+  .body-text p {
+    margin-bottom: 20px;
+  }
+
+  .body-text strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .body-text em {
+    color: var(--red);
+    font-style: italic;
+  }
+
+  /* ── PULL QUOTE ── */
+  .pull-quote {
+    border-left: 3px solid var(--gold);
+    padding: 20px 28px;
+    margin: 36px 0;
+    background: rgba(196,154,60,0.05);
+    font-style: italic;
+    font-size: 19px;
+    color: var(--ink);
+    line-height: 1.7;
+  }
+
+  .pull-quote cite {
+    display: block;
+    margin-top: 10px;
+    font-size: 13px;
+    color: var(--faded);
+    font-style: normal;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 0.1em;
+  }
+
+  /* ── STAT CARDS ── */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    margin: 40px 0;
+  }
+
+  .stat-card {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 28px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: var(--gold);
+  }
+
+  .stat-number {
+    font-family: 'Cinzel', serif;
+    font-size: 36px;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .stat-label {
+    font-size: 13px;
+    color: rgba(245,240,232,0.6);
+    font-style: italic;
+    line-height: 1.4;
+  }
+
+  /* ── TIMELINE ── */
+  .timeline {
+    position: relative;
+    margin: 40px 0;
+    padding-left: 32px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    bottom: 8px;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--gold), rgba(196,154,60,0.1));
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 36px;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .timeline-item.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -36px;
+    top: 8px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+    border: 2px solid var(--paper);
+    box-shadow: 0 0 0 2px var(--gold);
+  }
+
+  .timeline-date {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+
+  .timeline-content {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--muted);
+  }
+
+  .timeline-content strong {
+    color: var(--ink);
+  }
+
+  /* ── SURNAME EVOLUTION ── */
+  .surname-flow {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin: 40px 0;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .surname-step {
+    text-align: center;
+    padding: 24px 20px;
+    background: var(--aged);
+    flex: 1;
+    min-width: 120px;
+    position: relative;
+    transition: background 0.3s;
+  }
+
+  .surname-step:hover { background: #ddd4bb; }
+
+  .surname-step + .surname-step::before {
+    content: '→';
+    position: absolute;
+    left: -12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--gold);
+    font-size: 18px;
+    z-index: 1;
+  }
+
+  .surname-char {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--ink);
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .surname-pinyin {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .surname-desc {
+    font-size: 12px;
+    color: var(--faded);
+    font-style: italic;
+    line-height: 1.4;
+  }
+
+  /* ── MIGRATION MAP ── */
+  .migration-routes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    margin: 40px 0;
+  }
+
+  .route-card {
+    border: 1px solid rgba(196,154,60,0.2);
+    padding: 24px;
+    position: relative;
+    background: rgba(196,154,60,0.03);
+    transition: background 0.3s, border-color 0.3s;
+  }
+
+  .route-card:hover {
+    background: rgba(196,154,60,0.07);
+    border-color: rgba(196,154,60,0.4);
+  }
+
+  .route-number {
+    font-family: 'Cinzel', serif;
+    font-size: 48px;
+    color: rgba(196,154,60,0.15);
+    position: absolute;
+    top: 10px;
+    right: 16px;
+    line-height: 1;
+  }
+
+  .route-period {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+
+  .route-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+
+  .route-desc {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--faded);
+  }
+
+  /* ── GLOBAL DISTRIBUTION ── */
+  .regions-list {
+    columns: 2;
+    column-gap: 40px;
+    margin: 24px 0;
+  }
+
+  .regions-list li {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 2;
+    list-style: none;
+    padding-left: 16px;
+    position: relative;
+  }
+
+  .regions-list li::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 20px;
+    line-height: 1.6;
+  }
+
+  /* ── COMMANDERIES ── */
+  .commanderies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 12px;
+    margin: 32px 0;
+  }
+
+  .commandery-tag {
+    background: var(--ink);
+    color: var(--gold-light);
+    padding: 10px 14px;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 13px;
+    text-align: center;
+    letter-spacing: 0.05em;
+    border: 1px solid rgba(196,154,60,0.2);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    color: rgba(196,154,60,0.5);
+    text-align: center;
+    padding: 60px 40px;
+    border-top: 1px solid rgba(196,154,60,0.2);
+  }
+
+  .footer-chinese {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 24px;
+    color: var(--gold);
+    letter-spacing: 0.3em;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .footer-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    line-height: 2;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    nav { padding: 0 20px; }
+    .nav-links { gap: 16px; }
+    .nav-links a { font-size: 9px; letter-spacing: 0.1em; }
+    .section { padding: 60px 24px; }
+    .surname-flow { flex-direction: column; }
+    .surname-step + .surname-step::before { content: '↓'; left: 50%; top: -12px; transform: translateX(-50%); }
+    .regions-list { columns: 1; }
+  }
+
+  /* ── DECORATIVE CHINESE RULE ── */
+  .chinese-rule {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 48px 0 32px;
+    color: var(--gold);
+    font-family: 'Noto Serif SC', serif;
+    font-size: 14px;
+  }
+
+  .chinese-rule::before,
+  .chinese-rule::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(196,154,60,0.3), transparent);
+  }
+
+  /* ── ANCESTOR CARD ── */
+  .ancestor-card {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 24px;
+    padding: 28px 0;
+    border-bottom: 1px solid rgba(196,154,60,0.1);
+    align-items: start;
+  }
+
+  .ancestor-char {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 52px;
+    font-weight: 700;
+    color: rgba(196,154,60,0.2);
+    text-align: center;
+    line-height: 1;
+  }
+
+  .ancestor-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+
+  .ancestor-dates {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+    margin-bottom: 10px;
+  }
+
+  .ancestor-desc {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--muted);
+  }
+
+  /* Volume badge */
+  .volume-badge {
+    display: inline-block;
+    border: 1px solid rgba(196,154,60,0.4);
+    padding: 6px 16px;
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    margin-bottom: 40px;
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-lines"></div>
+  <div class="hero-seal"></div>
+
+  <div class="hero-chinese">李氏历代<br>源流世系</div>
+  <div class="hero-divider"></div>
+  <div class="hero-subtitle">Li Family Genealogy of Historical Origins &amp; Lineage</div>
+  <div class="hero-meta">总汇 · General Compilation &nbsp;《第八册》· Volume VIII</div>
+
+  <div class="scroll-cue">Scroll</div>
+</section>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-title" title="Lee Family Heritage — main site">李氏族谱</a>
+  <ul class="nav-links">
+    <li><a href="#origins">Origins</a></li>
+    <li><a href="#surname">Surname</a></li>
+    <li><a href="#ancestors">Ancestors</a></li>
+    <li><a href="#tang">Tang Dynasty</a></li>
+    <li><a href="#migration">Migration</a></li>
+    <li><a href="#world">World</a></li>
+  </ul>
+</nav>
+
+<!-- SECTION 1: ANCESTRAL ORIGINS -->
+<div id="origins">
+<div class="section fade-in">
+  <div class="section-label">Chapter I</div>
+  <div class="section-chinese">祖源</div>
+  <div class="section-english">Ancestral Origins — The Blood Lineage Roots of Our Branch</div>
+
+  <div class="body-text">
+    <p><strong>Shaodian</strong> was the common ancestor of the Chinese people's progenitors, the Yan Emperor and the Yellow Emperor — and the founding ancestor of the Li family bloodline. Originally surnamed Gongsun, he was the chieftain of the Youxiong tribe and ruler of the Xiong kingdom during the primitive era, born in 3242 BC and living to 160 years of age.</p>
+
+    <p>Shaodian took two daughters of the Qiao clan as consorts. The first consort, <strong>Nü Deng</strong>, gave birth to the Yan Emperor on the 26th day of the 4th lunar month. The second consort, <strong>Fu Bao</strong>, gave birth to the Yellow Emperor on March 3, 3274 BC — named Yun, with the courtesy name <strong>Xuanyuan</strong>.</p>
+
+    <p>China has long observed the saying: <em>"On the second day of the second month, the dragon raises its head; on the third day of the third month, Xuanyuan was born."</em></p>
+
+    <p>The Yellow Emperor married Leizu (his principal consort) and had two sons. One son, <strong>Xuanxiao (Qingyang)</strong>, was born by the Ji River and thus took the surname <strong>Ji</strong> — a surname the Yellow Emperor's legitimate descendants maintained for generations. The Yellow Emperor lived 121 years and ascended the throne in 2697 BC, reigning for 100 years.</p>
+
+    <p>Xinzheng in Henan is the birthplace, place of enterprise, and capital of the Chinese civilization's ancestor Xuanyuan the Yellow Emperor. Every year on the 3rd day of the 3rd lunar month, a public ceremony honoring the Yellow Emperor is held at his hometown — a great traditional ceremony of the Chinese people.</p>
+  </div>
+
+  <div class="pull-quote">
+    "The Yan Emperor and the Yellow Emperor were chieftains of two great tribes. After three battles at Banquan, the Yan Emperor submitted to the Yellow Emperor. Together they formed the Yan-Huang tribal alliance — and the history of the Chinese people thus began."
+    <cite>— Li Family Genealogy, Vol. VIII</cite>
+  </div>
+
+  <div class="body-text">
+    <p>The <strong>Yan Emperor</strong> had the head of an ox and horns on his head according to legend, born in the stone cave of Lieshan and raised by the Jiang River. He possessed great virtue, ruled with the power of fire, and was titled the Flame Emperor. Clever from childhood — speaking at three days, walking at five — he taught the people farming, personally tasted hundreds of herbs to discover medicines, made musical instruments, and taught ritual propriety.</p>
+
+    <p>The Yan Emperor's mausoleum is located in Yanling, Hunan Province. The Yellow Emperor's hometown shrine in Xinzheng, first built during the Han dynasty, now covers over 70,000 square meters. At its heart stands the Yellow Emperor's Treasure Cauldron — 6.99 meters tall, 4.7 meters in diameter, weighing 24 tons — surrounded by eight companion cauldrons representing Love, Longevity, Wealth, Career, Peace, Abundance, Wisdom, and Governance. The plaza's 13-meter red granite boulevard and 5-meter yellow granite Ancestor Worship Sacred Path symbolize that <em>the descendants of Yan and Huang share connected bloodlines, and that the torch is passed down through the generations.</em></p>
+  </div>
+</div>
+</div>
+
+<!-- SECTION 2: SURNAME FORMATION -->
+<div id="surname">
+<div class="section fade-in">
+  <div class="section-label">Chapter II</div>
+  <div class="section-chinese">李姓何时何地何人形成</div>
+  <div class="section-english">When, Where, and By Whom Was the Li Surname Formed</div>
+
+  <div class="body-text">
+    <p>Primitive surnames were the clan names of matrilineal tribes — the character for "surname" (姓) is itself composed of "女" (woman) and "生" (born). Many ancient surnames derived from the female side, such as Ji (姬) and Jiang (姜). As descendants multiplied, one lineage divided into several branches scattered to various places, each with a special symbol as its marker — the clan name (氏).</p>
+  </div>
+
+  <h3 class="chinese-rule">The Evolution of the Li Surname</h3>
+
+  <div class="surname-flow">
+    <div class="surname-step">
+      <span class="surname-char">公孙</span>
+      <span class="surname-pinyin">Gōngsūn</span>
+      <span class="surname-desc">Original surname of Shaodian, founding ancestor of the Chinese nation</span>
+    </div>
+    <div class="surname-step">
+      <span class="surname-char">姬</span>
+      <span class="surname-pinyin">Jī</span>
+      <span class="surname-desc">Yellow Emperor's surname, derived from the Ji River where he was born</span>
+    </div>
+    <div class="surname-step">
+      <span class="surname-char">偓</span>
+      <span class="surname-pinyin">Wò (Yān)</span>
+      <span class="surname-desc">Granted surname to Gaotao by Emperor Yao, meaning "Yan"</span>
+    </div>
+    <div class="surname-step">
+      <span class="surname-char">理</span>
+      <span class="surname-pinyin">Lǐ</span>
+      <span class="surname-desc">Official title surname: Gaotao served as Grand Judge (大理官)</span>
+    </div>
+    <div class="surname-step">
+      <span class="surname-char">李</span>
+      <span class="surname-pinyin">Lǐ</span>
+      <span class="surname-desc">"Pointing to a tree" — adopted 1122 BC in memory of the plum tree that saved their lives</span>
+    </div>
+  </div>
+
+  <div class="body-text">
+    <p>The Li surname's profound origin story begins with <strong>Li Wei</strong>, a court official who offered honest remonstrance to the tyrannical last ruler of the Shang dynasty, King Zhou. Executed for his uprightness in 1049 BC at age 51, his wife Lady Qi and He fled with their young son to survive.</p>
+
+    <p>With food exhausted, they survived by eating the fruit of a plum tree (<em>李树</em>). To forever remember this grace, and to conceal their true identity from the king's pursuers, Lady Qi combined the characters 木 (tree) and 子 (child/seed) to form <strong>李</strong> — changing their surname from the old 理 to the new 李. The father's name Liwei became <strong>Li Zhen (利贞)</strong> — the last two characters of the I Ching's Qian hexagram phrase: <em>"元亨利贞" — Yuan Heng Li Zhen.</em></p>
+
+    <p>The character "理" and "李" are homophones. "理" contains the character "田" (field), indicating its connection to the Yellow Emperor's bloodline. "木" and "子" together form "李" — taking the tree's name as their own. This is the origin of the saying <em>"pointing to a tree to take as a surname" (指树为姓).</em></p>
+  </div>
+
+  <div class="pull-quote">
+    "利贞 lived to 78 years old (1069–992 BC), and is the 34th generation of the Chinese surname lineage. According to the Study of Surnames: the three characters '理,' '里,' and '李' were interchangeable in antiquity."
+    <cite>— Li Family Genealogy</cite>
+  </div>
+
+  <div class="body-text">
+    <p><strong>From the founding of the Li surname with Lizhen to today, the Li surname has a history of over 3,079 years.</strong></p>
+  </div>
+</div>
+</div>
+
+<!-- SECTION 3: KEY ANCESTORS -->
+<div id="ancestors">
+<div class="section fade-in">
+  <div class="section-label">Chapter III</div>
+  <div class="section-chinese">历代先祖</div>
+  <div class="section-english">Ancestors Through the Ages</div>
+
+  <div class="ancestor-card">
+    <div class="ancestor-char">皋</div>
+    <div>
+      <div class="ancestor-name">Gaotao (皋陶) — Grand Judge of Yao</div>
+      <div class="ancestor-dates">Born 2457 BC · Lived 91 Years</div>
+      <div class="ancestor-desc">Originally named Tingjian, Gaotao was the chieftain of the Eastern Yi tribe and served as Grand Judge — head of Chinese jurisprudence — under Emperor Yao. He established the five punishments, proclaimed the Five Teachings, Five Rites, and Nine Virtues, and is regarded as the founding ancestor of Chinese law. His descendants took his official title "大理" (Grand Judge) as their surname: <strong>理 (Lǐ)</strong>.</div>
+    </div>
+  </div>
+
+  <div class="ancestor-card">
+    <div class="ancestor-char">理</div>
+    <div>
+      <div class="ancestor-name">Li Wei (理微) — The Upright Official</div>
+      <div class="ancestor-dates">c. 1100–1049 BC · Lived 51 Years</div>
+      <div class="ancestor-desc">Courtesy name Deling, Li Wei served as Earl of Zhongjun at the Shang court. He offered honest remonstrance to the tyrannical King Zhou but was executed for his uprightness. His death forced his family to flee, leading to the transformation of the surname from 理 to <strong>李</strong>. The New Book of Tang records him as one "who was upright and would not submit."</div>
+    </div>
+  </div>
+
+  <div class="ancestor-card">
+    <div class="ancestor-char">贞</div>
+    <div>
+      <div class="ancestor-name">Li Zhen (利贞) — Founding Ancestor of the Li Surname</div>
+      <div class="ancestor-dates">1069–992 BC · 34th Generation from Chinese Nation's Founding</div>
+      <div class="ancestor-desc">Son of Li Wei, Li Zhen adopted the surname 李 in 1122 BC after surviving on plum tree fruit. He settled in Luyi County, eastern Henan. Named to commemorate both the plum tree's grace and the I Ching's phrase <em>"元亨利贞"</em>. He is the first ancestor of the Li (李) surname, now the world's largest surname.</div>
+    </div>
+  </div>
+
+  <div class="ancestor-card">
+    <div class="ancestor-char">耳</div>
+    <div>
+      <div class="ancestor-name">Li Er (李耳) — Laozi, Father of Taoism</div>
+      <div class="ancestor-dates">17th Generation Descendant of Li Zhen · Spring and Autumn Period</div>
+      <div class="ancestor-desc">Courtesy name Boyang, known as Laozi (Old Master). Born in Lixiang Quren Village, Ku County (Chu state territory). He served as the Zhou Royal Court's Keeper of the Archives (柱下史) — equivalent to director of the national library. Author of the <em>Tao Te Ching</em> in 5,000 characters — the foundational text of Taoism. Confucius called him a teacher of his generation: "Of birds I know they can fly; of fish I know they can swim... but the dragon, I cannot tell."</div>
+    </div>
+  </div>
+
+  <div class="ancestor-card">
+    <div class="ancestor-char">昺</div>
+    <div>
+      <div class="ancestor-name">Li Yan (李昺) — The Branching Point</div>
+      <div class="ancestor-dates">8th Generation Descendant of Laozi</div>
+      <div class="ancestor-desc">Courtesy name Guiyuan, Li Yan served as Grand Censor under the Qin state. His four sons — <strong>Chong, Bian, Zhao, and Ju</strong> — established the great family branches. The eldest son Chong founded the <strong>Long Xi branch</strong> (Gansu), which later divided into 39 houses. The fourth son Ju founded the <strong>Zhao Commandery branch</strong> (Henan), which divided into eastern, southern, and western factions — all becoming prominent local clans.</div>
+    </div>
+  </div>
+
+  <div class="ancestor-card">
+    <div class="ancestor-char">渊</div>
+    <div>
+      <div class="ancestor-name">Li Yuan (李渊) — Emperor Gaozu, Founder of the Tang Dynasty</div>
+      <div class="ancestor-dates">566–635 AD</div>
+      <div class="ancestor-desc">Courtesy name Shude, Li Yuan was a Han Chinese from Long Xi, Gansu. His grandfather Li Hu served as Grand Commandant under Western Wei; his father Li Bing served as Grand Censor under Northern Zhou. After the Sui dynasty's collapse amid peasant uprisings, Li Yuan raised his army in 617 AD and captured the capital. In 618 AD he founded the Tang dynasty — China's golden age — which lasted 289 years through 14 emperors. He had 22 sons and is the direct imperial ancestor of the Tang Li royal family.</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- SECTION 4: TANG DYNASTY -->
+<div id="tang">
+<div class="section fade-in">
+  <div class="section-label">Chapter IV</div>
+  <div class="section-chinese">唐朝李氏</div>
+  <div class="section-english">The Li Clan During the Tang Dynasty</div>
+
+  <div class="body-text">
+    <p>The Tang dynasty was the pinnacle of Chinese feudal society, ruling all under heaven for nearly 300 years. The Li clan, as the <strong>"imperial surname" (国姓)</strong>, was most prominent, and as a result underwent tremendous population growth. Speaking of the imperial household alone:</p>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-number">22</div>
+      <div class="stat-label">Sons of Emperor Gaozu Li Yuan, in 15 houses</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">41</div>
+      <div class="stat-label">Total imperial houses across all Tang emperors</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">12</div>
+      <div class="stat-label">Imperial clan prime ministers of the Tang</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">27</div>
+      <div class="stat-label">Long Xi &amp; Zhao Commandery Li prime ministers</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">289</div>
+      <div class="stat-label">Years the Tang dynasty ruled (618–907 AD)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">14</div>
+      <div class="stat-label">Emperors of the Tang dynasty</div>
+    </div>
+  </div>
+
+  <div class="body-text">
+    <p><strong>Emperor Taizong Li Shimin</strong> (born 599 AD) reigned for 23 years, died in 683 AD at age 84, and is buried at Zhaoling in Liquan County, Shaanxi. He had 14 sons.</p>
+
+    <p>Furthermore, all civil officials and military generals who helped Li Yuan and Li Shimin conquer the realm — or who rendered meritorious service to the Tang dynasty — were granted the imperial surname Li. Those successively given the Li surname included the families of Xu, Xing, An, Du, Hu, Hong, Guo, Ma, Zhang, Cao, Luo, and from ethnic minorities: the Xianyu, Abu, Adao, Sheli, and Zhuye clans — greatly expanding the Li surname population.</p>
+
+    <p>The <em>Guangyun</em> records <strong>12 commanderies</strong> of the Li clan, and the Tang dynasty's New Collection of Surname Genealogies notes that among all major surnames across key prefectures, the Li clan consistently ranked first.</p>
+  </div>
+
+  <h3 class="chinese-rule">The 12 Great Li Clan Commanderies</h3>
+
+  <div class="commanderies-grid">
+    <div class="commandery-tag">陇西 Long Xi</div>
+    <div class="commandery-tag">赵郡 Zhao Commandery</div>
+    <div class="commandery-tag">顿丘 Dunqiu</div>
+    <div class="commandery-tag">渤海 Bohai</div>
+    <div class="commandery-tag">中山 Zhongshan</div>
+    <div class="commandery-tag">襄城 Xiangcheng</div>
+    <div class="commandery-tag">江夏 Jiangxia</div>
+    <div class="commandery-tag">梓潼 Zijing</div>
+    <div class="commandery-tag">范阳 Fanyang</div>
+    <div class="commandery-tag">广汉 Guanghan</div>
+    <div class="commandery-tag">梁国 Liang Commandery</div>
+    <div class="commandery-tag">南阳 Nanyang</div>
+  </div>
+</div>
+</div>
+
+<!-- SECTION 5: MIGRATION -->
+<div id="migration">
+<div class="section fade-in">
+  <div class="section-label">Chapter V</div>
+  <div class="section-chinese">李氏迁徙</div>
+  <div class="section-english">Migration of the Li Clan</div>
+
+  <div class="body-text">
+    <p>The Li surname originated in China's Yellow River basin. After more than 3,000 years, descendants spread from Shaanxi and Zhao Commandery southward across China, and from southern China to all parts of the world.</p>
+
+    <p>According to the Li Clan Genealogy, the southward migration during the Tang dynasty occurred mainly <strong>three times</strong>, followed by further migrations overseas:</p>
+  </div>
+
+  <div class="migration-routes">
+    <div class="route-card">
+      <div class="route-number">I</div>
+      <div class="route-period">Early Tang · 668–670 AD</div>
+      <div class="route-title">First Southern Migration</div>
+      <div class="route-desc">Li clan members from Henan followed Chen Zheng and Chen Yuanguang, father and son, into Fujian to open up and establish Zhangzhou — the earliest Li clan people to enter Fujian.</div>
+    </div>
+    <div class="route-card">
+      <div class="route-number">II</div>
+      <div class="route-period">An-Shi Rebellion · 756–763 AD</div>
+      <div class="route-title">Second Southern Migration</div>
+      <div class="route-desc">"The Central Plains were in turmoil and the gentry fled southward" — during the devastating An Lushan Rebellion, considerable numbers of Li clan descendants migrated south.</div>
+    </div>
+    <div class="route-card">
+      <div class="route-number">III</div>
+      <div class="route-period">Late Tang through Five Dynasties</div>
+      <div class="route-title">Third Southern Migration</div>
+      <div class="route-desc">Due to prolonged turmoil in the Central Plains, Li clan members traveled from Chang'an to Kaifeng then Fujian, or entered directly from Henan following Wang Chao and Wang Shen, settling in Putian, Jinjiang, and beyond.</div>
+    </div>
+    <div class="route-card">
+      <div class="route-number">IV</div>
+      <div class="route-period">Late Ming / Early Qing</div>
+      <div class="route-title">Migration to Ryukyu</div>
+      <div class="route-desc">The Ming dynasty granted the Ryukyu Kingdom "thirty-six Fujian families skilled in operating boats" — among them Li clan members. Many Fujianese Li clan members settled in Kumemura near Naha, Okinawa.</div>
+    </div>
+    <div class="route-card">
+      <div class="route-number">V</div>
+      <div class="route-period">Post Opium Wars · 19th Century</div>
+      <div class="route-title">Migration to Southeast Asia</div>
+      <div class="route-desc">Able-bodied Li surname young men from Guangdong, Fujian, and Hainan departed through Hong Kong, Macau, Xiamen, and Shantou, sailed southward by ship through great hardships to seek their livelihood in Southeast Asia.</div>
+    </div>
+    <div class="route-card">
+      <div class="route-number">VI</div>
+      <div class="route-period">Modern Era</div>
+      <div class="route-title">Migration to Europe &amp; Americas</div>
+      <div class="route-desc">Many more Li surname people crossed the vast oceans to seek their development in European and American countries on both shores of the Atlantic Ocean — the Li name truly becoming global.</div>
+    </div>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-date">c. 1122 BC</div>
+      <div class="timeline-content"><strong>Li Zhen</strong> adopts the surname 李 in Luyi County, eastern Henan — founding the Li lineage</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">Spring &amp; Autumn Period</div>
+      <div class="timeline-content"><strong>Laozi (Li Er)</strong> authors the Tao Te Ching; family based in Ku County, Henan</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">Qin Dynasty</div>
+      <div class="timeline-content">Li Yan's sons establish the two great branches: <strong>Long Xi</strong> (Gansu) and <strong>Zhao Commandery</strong> (Henan)</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">Eastern Han · c. 25 AD</div>
+      <div class="timeline-content">Li clan members begin migrating southwestward into <strong>Sichuan and Yunnan</strong></div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">618 AD</div>
+      <div class="timeline-content"><strong>Li Yuan</strong> founds the Tang dynasty — the Li clan's greatest era of expansion begins</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">668–907 AD</div>
+      <div class="timeline-content">Three waves of southward migration bring the Li clan into <strong>Fujian, Guangdong, and beyond</strong></div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">Ming–Qing Dynasties</div>
+      <div class="timeline-content">Li clan spreads to <strong>Ryukyu, Vietnam, Korea</strong>, and Southeast Asia</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">19th–21st Century</div>
+      <div class="timeline-content">Li clan members emigrate to <strong>every continent</strong> — becoming the world's largest surname with over 100 million bearers</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- SECTION 6: WORLD DISTRIBUTION -->
+<div id="world">
+<div class="section fade-in">
+  <div class="section-label">Chapter VI</div>
+  <div class="section-chinese">李姓分布世界各地</div>
+  <div class="section-english">The Li Surname Distributed Across the World</div>
+
+  <div class="pull-quote">
+    寻根问祖 光大李姓文化<br>
+    追思先贤 继承优良传统<br>
+    <em style="font-size:14px; color: var(--faded);">Seek our roots and ancestors, glorify Li family culture · Remember the worthy predecessors, inherit our fine traditions</em>
+    <cite>— Li Family Genealogy Preface</cite>
+  </div>
+
+  <div class="body-text">
+    <p>The Li surname is currently <strong>China's number one surname and the world's largest surname.</strong> Experts from the Genetics Research Institute of the Chinese Academy of Sciences, using 0.05% random sampling data from the national population, found that among all ethnic surnames nationwide, the Li surname is the most numerous — accounting for approximately <strong>7.9% of the Han Chinese population</strong>.</p>
+
+    <p>It has been estimated that if all the Li family members in the world were to stand in a line, they could <em>circle the globe one and a half times.</em></p>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-number">87M+</div>
+      <div class="stat-label">Li surname holders worldwide</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">7.9%</div>
+      <div class="stat-label">Of all Han Chinese people</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">#1</div>
+      <div class="stat-label">World's largest surname</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">3,079+</div>
+      <div class="stat-label">Years of Li surname history</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">4%+</div>
+      <div class="stat-label">Of Taiwan's total population</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">5</div>
+      <div class="stat-label">Continents with Li surname presence</div>
+    </div>
+  </div>
+
+  <h3 class="chinese-rule">Global Distribution</h3>
+
+  <div class="body-text">
+    <p>The Li surname is extremely widespread within China, with more living in the north than the south. Overseas, the Li surname has spread to almost every corner of the world:</p>
+  </div>
+
+  <ul class="regions-list">
+    <li>Vietnam</li>
+    <li>Korea</li>
+    <li>Singapore</li>
+    <li>Malaysia</li>
+    <li>Indonesia</li>
+    <li>Philippines</li>
+    <li>Thailand</li>
+    <li>Cambodia</li>
+    <li>Myanmar</li>
+    <li>Pakistan</li>
+    <li>India</li>
+    <li>Nepal</li>
+    <li>Japan</li>
+    <li>Mongolia</li>
+    <li>United States</li>
+    <li>Canada</li>
+    <li>United Kingdom</li>
+    <li>France</li>
+    <li>Germany</li>
+    <li>Netherlands</li>
+    <li>Switzerland</li>
+    <li>Belgium</li>
+    <li>Russia</li>
+    <li>Australia</li>
+    <li>New Zealand</li>
+    <li>Brazil</li>
+    <li>South Africa</li>
+    <li>Hong Kong &amp; Macau</li>
+  </ul>
+
+  <div class="body-text" style="margin-top: 32px;">
+    <p>The surname originated in the Yellow River basin of China. After more than 3,000 years, descendants have spread from <strong>Shaanxi and Zhao Commandery</strong> southward across China, and from southern China to all parts of the world. Across the Han, Jin, Tang, and Song dynasties, the Li clan developed into major local clans, with some assimilating into the Yi, Bai, Miao, Yao, Dong, Zhuang, Shui, Naxi, Hui, and other ethnic groups.</p>
+
+    <p>During the Wei, Jin, Northern and Southern Dynasties period, the Li clan had already become one of the largest surnames nationwide. Among the Central Plains' prominent clans, the <strong>Cui, Lu, Li, and Zheng</strong> were known as the four great distinguished families — regarded as the most esteemed gentry of their age.</p>
+  </div>
+</div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-chinese">李氏历代源流世系</span>
+  <div class="footer-text">
+    总汇 · General Compilation &nbsp;|&nbsp; 《第八册》· Volume VIII<br><br>
+    <em>From the founding ancestor Shaodian to the present day —<br>
+    the Li family's 3,000-year journey across the world.</em><br><br>
+    寻根问祖 · 光大李姓文化 · 追思先贤 · 继承优良传统
+  </div>
+</footer>
+
+<script>
+  // Intersection Observer for fade-in animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+  document.querySelectorAll('.fade-in, .timeline-item').forEach(el => {
+    observer.observe(el);
+  });
+
+  // Stagger timeline items
+  document.querySelectorAll('.timeline-item').forEach((item, i) => {
+    item.style.transitionDelay = `${i * 0.08}s`;
+  });
+</script>
+
+</body>
+</html>
